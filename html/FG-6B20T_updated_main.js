@@ -210,7 +210,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'ins_video',
     units: psychoJS.window.units,
-    movie: 'stimuli/Which Pond Tutorial Video_FINAL_3.1.23.mp4',
+    movie: 'stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4',
     pos: [0, 0],
     anchor: 'center',
     size: [0.9, 0.5],
