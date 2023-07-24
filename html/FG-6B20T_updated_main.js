@@ -20,15 +20,15 @@ let expInfo = {
 // Start code blocks for 'Before Experiment'
 // Run 'Before Experiment' code from mainCode
 // import * as random from 'random';
-pond_loc = [0, 0.25];
-boy_loc = [0.75, (- 0.3)];
-arrow_loc = [0.5, (- 0.3)];
-fish_loc = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];
-box_loc = [[(- 0.32), 0.25], [0, 0.25], [0.32, 0.25]];
-fish_interval = [0.5, 1.0, 1.5];
-block_correct = [];
-msg = "doh!";
-conditionfolder = "";
+var pond_loc = [0, 0.25];
+var boy_loc = [0.75, (- 0.3)];
+var arrow_loc = [0.5, (- 0.3)];
+var fish_loc = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0.3)], [(- 0.6), (- 0.3)]];
+var box_loc = [[(- 0.32), 0.25], [0, 0.25], [0.32, 0.25]];
+var fish_interval = [0.5, 1.0, 1.5];
+var block_correct = [];
+var msg = "doh!";
+var conditionfolder = "";
 
 // init psychoJS:
 const psychoJS = new PsychoJS({
