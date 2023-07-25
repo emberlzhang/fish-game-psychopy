@@ -101,7 +101,15 @@ psychoJS.start({
     {'name': 'stimuli/clear-jar.PNG', 'path': 'resources/stimuli/clear-jar.PNG'},
     {'name': 'stimuli/code_component.txt', 'path': 'resources/stimuli/code_component.txt'},
     {'name': 'stimuli/jars.PNG', 'path': 'resources/stimuli/jars.PNG'},
-    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'}
+    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
+    {'name': '1condition/practice.xlsx', 'path': 'resources/1condition/practice.xlsx'},
+    {'name': '1condition/Blocks.xlsx', 'path': 'resources/1condition/Blocks.xlsx'},
+    {'name': '1condition/trialsB1.xlsx', 'path': 'resources/1condition/trialsB1.xlsx'},
+    {'name': '1condition/trialsB2.xlsx', 'path': 'resources/1condition/trialsB2.xlsx'},
+    {'name': '1condition/trialsB3.xlsx', 'path': 'resources/1condition/trialsB3.xlsx'},
+    {'name': '1condition/trialsB4.xlsx', 'path': 'resources/1condition/trialsB4.xlsx'},
+    {'name': '1condition/trialsB5.xlsx', 'path': 'resources/1condition/trialsB5.xlsx'},
+    {'name': '1condition/trialsB6.xlsx', 'path': 'resources/1condition/trialsB6.xlsx'},
   ]
   });
 
