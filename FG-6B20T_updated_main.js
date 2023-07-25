@@ -89,6 +89,19 @@ dialogCancelScheduler.add(quitPsychoJS, '', false);
 psychoJS.start({
   expName: expName,
   expInfo: expInfo,
+  resources: [
+    {'name': 'resources/stimuli/instruction_image.png', 'path': 'resources/stimuli/instruction_image.png'},
+    {'name': 'resources/stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4', 'path': 'resources/stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4'},
+    {'name': 'resources/stimuli/arrow.png', 'path': 'resources/stimuli/arrow.png'},
+    {'name': 'resources/stimuli/bead_b.PNG', 'path': 'resources/stimuli/bead_b.PNG'},
+    {'name': 'resources/stimuli/bead_g.PNG', 'path': 'resources/stimuli/bead_g.PNG'},
+    {'name': 'resources/stimuli/bead_y.PNG', 'path': 'resources/stimuli/bead_y.PNG'},
+    {'name': 'resources/stimuli/blank.jpg', 'path': 'resources/stimuli/blank.jpg'},
+    {'name': 'resources/stimuli/blank2.jpg', 'path': 'resources/stimuli/blank2.jpg'},
+    {'name': 'resources/stimuli/clear-jar.PNG', 'path': 'resources/stimuli/clear-jar.PNG'},
+    {'name': 'resources/stimuli/code_component.txt', 'path': 'resources/stimuli/code_component.txt'},
+    {'name': 'resources/stimuli/jars.PNG', 'path': 'resources/stimuli/jars.PNG'}
+  ]
   });
 
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.DEBUG);
