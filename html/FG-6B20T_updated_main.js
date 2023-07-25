@@ -89,19 +89,20 @@ dialogCancelScheduler.add(quitPsychoJS, '', false);
 psychoJS.start({
   expName: expName,
   expInfo: expInfo,
-  // resources: [
-  //   {'name': 'stimuli/instruction_image.png', 'path': 'stimuli/instruction_image.png'},
-  //   {'name': 'stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4', 'path': 'stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4'},
-  //   {'name': 'stimuli/arrow.png', 'path': 'stimuli/arrow.png'},
-  //   {'name': 'stimuli/bead_b.PNG', 'path': 'stimuli/bead_b.PNG'},
-  //   {'name': 'stimuli/bead_g.PNG', 'path': 'stimuli/bead_g.PNG'},
-  //   {'name': 'stimuli/bead_y.PNG', 'path': 'stimuli/bead_y.PNG'},
-  //   {'name': 'stimuli/blank.jpg', 'path': 'stimuli/blank.jpg'},
-  //   {'name': 'stimuli/blank2.jpg', 'path': 'stimuli/blank2.jpg'},
-  //   {'name': 'stimuli/clear-jar.PNG', 'path': 'stimuli/clear-jar.PNG'},
-  //   {'name': 'stimuli/code_component.txt', 'path': 'stimuli/code_component.txt'},
-  //   {'name': 'stimuli/jars.PNG', 'path': 'stimuli/jars.PNG'}
-  // ]
+  resources: [
+    {'name': 'stimuli/instruction_image.png', 'path': 'resources/stimuli/instruction_image.png'},
+    {'name': 'stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4', 'path': 'resources/stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4'},
+    {'name': 'stimuli/arrow.png', 'path': 'resources/stimuli/arrow.png'},
+    {'name': 'stimuli/bead_b.PNG', 'path': 'resources/stimuli/bead_b.PNG'},
+    {'name': 'stimuli/bead_g.PNG', 'path': 'resources/stimuli/bead_g.PNG'},
+    {'name': 'stimuli/bead_y.PNG', 'path': 'resources/stimuli/bead_y.PNG'},
+    {'name': 'stimuli/blank.jpg', 'path': 'resources/stimuli/blank.jpg'},
+    {'name': 'stimuli/blank2.jpg', 'path': 'resources/stimuli/blank2.jpg'},
+    {'name': 'stimuli/clear-jar.PNG', 'path': 'resources/stimuli/clear-jar.PNG'},
+    {'name': 'stimuli/code_component.txt', 'path': 'resources/stimuli/code_component.txt'},
+    {'name': 'stimuli/jars.PNG', 'path': 'resources/stimuli/jars.PNG'},
+    {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'}
+  ]
   });
 
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.DEBUG);
