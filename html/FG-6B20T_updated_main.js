@@ -96,7 +96,7 @@ psychoJS.start({
     {'name': 'stimuli/bead_b.PNG', 'path': 'resources/stimuli/bead_b.PNG'},
     {'name': 'stimuli/bead_g.PNG', 'path': 'resources/stimuli/bead_g.PNG'},
     {'name': 'stimuli/bead_y.PNG', 'path': 'resources/stimuli/bead_y.PNG'},
-    {'name': 'stimuli/blank.jpg', 'path': 'resources/stimuli/blank.jpg'},
+    {'name': 'stimuli/blank.JPG', 'path': 'resources/stimuli/blank.JPG'},
     {'name': 'stimuli/blank2.jpg', 'path': 'resources/stimuli/blank2.jpg'},
     {'name': 'stimuli/clear-jar.PNG', 'path': 'resources/stimuli/clear-jar.PNG'},
     {'name': 'stimuli/code_component.txt', 'path': 'resources/stimuli/code_component.txt'},
