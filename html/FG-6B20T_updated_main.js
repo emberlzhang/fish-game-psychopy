@@ -96,7 +96,7 @@ psychoJS.start({
     {'name': 'stimuli/bead_b.PNG', 'path': 'resources/stimuli/bead_b.PNG'},
     {'name': 'stimuli/bead_g.PNG', 'path': 'resources/stimuli/bead_g.PNG'},
     {'name': 'stimuli/bead_y.PNG', 'path': 'resources/stimuli/bead_y.PNG'},
-    {'name': 'stimuli/blank.JPG', 'path': 'resources/stimuli/blank.JPG'},
+    {'name': 'stimuli/blank.jpg', 'path': 'resources/stimuli/blank.jpg'},
     {'name': 'stimuli/blank2.jpg', 'path': 'resources/stimuli/blank2.jpg'},
     {'name': 'stimuli/clear-jar.PNG', 'path': 'resources/stimuli/clear-jar.PNG'},
     {'name': 'stimuli/code_component.txt', 'path': 'resources/stimuli/code_component.txt'},
@@ -247,7 +247,7 @@ async function experimentInit() {
   text_1a = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_1a',
-    text: 'The Fishing Game\n\nImagine a boy that goes fishing for 6 days. There are three ponds, each containing fish of different colors: blue, yellow, and green. In each pond the majority of the fish are of a single color.',
+    text: 'The Fishing Game\n\nImagine a boy that goes fishing for 10 days. There are three ponds, each containing fish of different colors: blue, yellow, and green. In each pond the majority of the fish are of a single color.',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0.35], height: 0.035,  wrapWidth: undefined, ori: 0.0,
