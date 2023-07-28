@@ -446,8 +446,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
-    // fillColor: new util.Color('black'),
-    fillColor: new util.Color(undefined),
+    fillColor: new util.Color('black'),
+    //fillColor: new util.Color(undefined),
     opacity: undefined, depth: -11, interpolate: true,
   });
   
@@ -592,6 +592,7 @@ async function experimentInit() {
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
     fillColor: new util.Color('black'),
+    //fillColor: new util.Color(undefined),
     opacity: undefined, depth: -13, interpolate: true,
   });
   
@@ -862,6 +863,7 @@ async function experimentInit() {
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
     fillColor: new util.Color('black'),
+    // fillColor: new util.Color(undefined),
     opacity: undefined, depth: -12, interpolate: true,
   });
   
@@ -1892,15 +1894,15 @@ function response_practiceRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (((key_resp_2.keys === "1") || (key_resp_2.keys === "left"))) {
-            // time = core.getTime();
+            var time = new Date();
             boxB_2.lineColor = "black";
         } else {
             if (((key_resp_2.keys === "2") || (key_resp_2.keys === "up"))) {
-                // time = core.getTime();
+                var time = new Date();
                 boxY_2.lineColor = "black";
             } else {
                 if (((key_resp_2.keys === "3") || (key_resp_2.keys === "right"))) {
-                    // time = core.getTime();
+                    var time = new Date();
                     boxG_2.lineColor = "black";
                 }
             }
