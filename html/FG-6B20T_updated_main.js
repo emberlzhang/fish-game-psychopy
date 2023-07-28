@@ -446,8 +446,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
-    fillColor: new util.Color('black'),
-    //fillColor: new util.Color(undefined),
+    //fillColor: new util.Color('black'),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -11, interpolate: true,
   });
   
@@ -591,8 +591,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
-    fillColor: new util.Color('black'),
-    //fillColor: new util.Color(undefined),
+    // fillColor: new util.Color('black'),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -13, interpolate: true,
   });
   
@@ -718,7 +718,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
-    fillColor: new util.Color(undefined),
+    //fillColor: new util.Color(undefined),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -10, interpolate: true,
   });
   
@@ -730,7 +731,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
-    fillColor: new util.Color('black'),
+    // fillColor: new util.Color('black'),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -11, interpolate: true,
   });
   
@@ -826,7 +828,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
+    //fillColor: new util.Color(undefined),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -9, interpolate: true,
   });
   
@@ -838,7 +841,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
+    //fillColor: new util.Color(undefined),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -10, interpolate: true,
   });
   
@@ -850,7 +854,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
+    //fillColor: new util.Color(undefined),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -11, interpolate: true,
   });
   
@@ -862,8 +867,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
-    fillColor: new util.Color('black'),
-    // fillColor: new util.Color(undefined),
+    // fillColor: new util.Color('black'),
+    fillColor: new util.Color('transparent'),
     opacity: undefined, depth: -12, interpolate: true,
   });
   
