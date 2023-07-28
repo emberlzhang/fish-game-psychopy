@@ -1905,10 +1905,10 @@ function response_practiceRoutineBegin(snapshot) {
             }
         }
         if (((key_resp_2.keys === pond_p2.toString()) || (key_resp_2.keys === pond_p3))) {
-            practice_msg = "Correct!";
+            var practice_msg = "Correct!";
             psychoJS.experiment.addData("fish_key_2.corr", 1);
         } else {
-            practice_msg = "Oops! Wrong pond.";
+            var practice_msg = "Oops! Wrong pond.";
             psychoJS.experiment.addData("fish_key_2.corr", 0);
         }
     }
