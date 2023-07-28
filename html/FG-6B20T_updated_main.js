@@ -1891,15 +1891,15 @@ function response_practiceRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (((key_resp_2.keys === "1") || (key_resp_2.keys === "left"))) {
-            time = core.getTime();
+            // time = core.getTime();
             boxB_2.lineColor = "black";
         } else {
             if (((key_resp_2.keys === "2") || (key_resp_2.keys === "up"))) {
-                time = core.getTime();
+                // time = core.getTime();
                 boxY_2.lineColor = "black";
             } else {
                 if (((key_resp_2.keys === "3") || (key_resp_2.keys === "right"))) {
-                    time = core.getTime();
+                    // time = core.getTime();
                     boxG_2.lineColor = "black";
                 }
             }
