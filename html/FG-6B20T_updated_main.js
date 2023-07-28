@@ -446,7 +446,8 @@ async function experimentInit() {
     lineWidth: 5.0, 
     colorSpace: 'rgb',
     lineColor: new util.Color('black'),
-    fillColor: new util.Color('black'),
+    // fillColor: new util.Color('black'),
+    fillColor: new util.Color(undefined),
     opacity: undefined, depth: -11, interpolate: true,
   });
   
@@ -2673,15 +2674,15 @@ function response_fishRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (((fish_key_button.keys === "1") || (fish_key_button.keys === "left"))) {
-            time = core.getTime();
+            // time = core.getTime();
             boxB.lineColor = "black";
         } else {
             if (((fish_key_button.keys === "2") || (fish_key_button.keys === "up"))) {
-                time = core.getTime();
+                // time = core.getTime();
                 boxY.lineColor = "black";
             } else {
                 if (((fish_key_button.keys === "3") || (fish_key_button.keys === "right"))) {
-                    time = core.getTime();
+                    // time = core.getTime();
                     boxG.lineColor = "black";
                 }
             }
