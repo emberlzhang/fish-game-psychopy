@@ -428,49 +428,49 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -9.0 
   });
-  // box_outline_2 = new visual.Rect ({
-  //   win: psychoJS.window, name: 'box_outline_2', 
-  //   width: [0.2, 0.2][0], height: [0.2, 0.2][1],
-  //   ori: 0.0, pos: fish_loc[0],
-  //   anchor: 'center',
-  //   lineWidth: 5.0, 
-  //   colorSpace: 'rgb',
-  //   lineColor: new util.Color('black'),
-  //   fillColor: new util.Color(undefined),
-  //   opacity: undefined, depth: -10, interpolate: true,
-  // });
+  box_outline_2 = new visual.Rect ({
+    win: psychoJS.window, name: 'box_outline_2', 
+    width: [0.2, 0.2][0], height: [0.2, 0.2][1],
+    ori: 0.0, pos: fish_loc[0],
+    anchor: 'center',
+    lineWidth: 5.0, 
+    colorSpace: 'rgb',
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0.5, depth: -10, interpolate: true,
+  });
   
-  // box_show_2 = new visual.Rect ({
-  //   win: psychoJS.window, name: 'box_show_2', 
-  //   width: [0.2, 0.2][0], height: [0.2, 0.2][1],
-  //   ori: 0.0, pos: fish_loc[0],
-  //   anchor: 'center',
-  //   lineWidth: 5.0, 
-  //   colorSpace: 'rgb',
-  //   lineColor: new util.Color('black'),
-  //   fillColor: new util.Color('black'),
-  //   opacity: undefined, depth: -11, interpolate: true,
+  box_show_2 = new visual.Rect ({
+    win: psychoJS.window, name: 'box_show_2', 
+    width: [0.2, 0.2][0], height: [0.2, 0.2][1],
+    ori: 0.0, pos: fish_loc[0],
+    anchor: 'center',
+    lineWidth: 5.0, 
+    colorSpace: 'rgb',
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0.5, depth: -11, interpolate: true,
+  });
+  // box_outline_2 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'box_outline_2', units : undefined, 
+  //   image : 'stimuli/box_outline.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -10.0 
   // });
-  box_outline_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'box_outline_2', units : undefined, 
-    image : 'stimuli/box_outline.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -10.0 
-  });
-  box_show_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'box_show_2', units : undefined, 
-    image : 'stimuli/box_outline.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -11.0 
-  });
+  // box_show_2 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'box_show_2', units : undefined, 
+  //   image : 'stimuli/box_outline.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -11.0 
+  // });
   
   key_resp_2 = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
@@ -575,9 +575,9 @@ async function experimentInit() {
     anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
-    lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
-    opacity: undefined, depth: -10, interpolate: true,
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0, depth: -10, interpolate: true,
   });
   
   boxY_2 = new visual.Rect ({
@@ -587,9 +587,9 @@ async function experimentInit() {
     anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
-    lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
-    opacity: undefined, depth: -11, interpolate: true,
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0, depth: -11, interpolate: true,
   });
   
   boxG_2 = new visual.Rect ({
@@ -599,33 +599,33 @@ async function experimentInit() {
     anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
-    lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
-    opacity: undefined, depth: -12, interpolate: true,
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0, depth: -12, interpolate: true,
   });
   
-  // box_outline2_2 = new visual.Rect ({
-  //   win: psychoJS.window, name: 'box_outline2_2', 
-  //   width: [0.2, 0.2][0], height: [0.2, 0.2][1],
-  //   ori: 0.0, pos: fish_loc[0],
-  //   anchor: 'center',
-  //   lineWidth: 5.0, 
-  //   colorSpace: 'rgb',
-  //   lineColor: new util.Color('black'),
-  //   fillColor: new util.Color('black'),
-  //   opacity: undefined, depth: -13, interpolate: true,
-  // });
-
-  box_outline2_2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'box_outline2_2', units : undefined, 
-    image : 'stimuli/box_outline.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -13.0 
+  box_outline2_2 = new visual.Rect ({
+    win: psychoJS.window, name: 'box_outline2_2', 
+    width: [0.2, 0.2][0], height: [0.2, 0.2][1],
+    ori: 0.0, pos: fish_loc[0],
+    anchor: 'center',
+    lineWidth: 5.0, 
+    colorSpace: 'rgb',
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0.5, depth: -13, interpolate: true,
   });
+
+  // box_outline2_2 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'box_outline2_2', units : undefined, 
+  //   image : 'stimuli/box_outline.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -13.0 
+  // });
   
   // Initialize components for Routine "wait"
   waitClock = new util.Clock();
@@ -741,48 +741,48 @@ async function experimentInit() {
     flipHoriz : false, flipVert : false,
     texRes : 128.0, interpolate : true, depth : -9.0 
   });
-  // box_outline = new visual.Rect ({
-  //   win: psychoJS.window, name: 'box_outline', 
-  //   width: [0.2, 0.2][0], height: [0.2, 0.2][1],
-  //   ori: 0.0, pos: fish_loc[0],
-  //   anchor: 'center',
-  //   lineWidth: 5.0, 
-  //   colorSpace: 'rgb',
-  //   lineColor: new util.Color('black'),
-  //   fillColor: new util.Color(undefined),
-  //   opacity: undefined, depth: -10, interpolate: true,
-  // });
-   // box_show = new visual.Rect ({
-  //   win: psychoJS.window, name: 'box_show', 
-  //   width: [0.2, 0.2][0], height: [0.2, 0.2][1],
-  //   ori: 0.0, pos: fish_loc[0],
-  //   anchor: 'center',
-  //   lineWidth: 5.0, 
-  //   colorSpace: 'rgb',
-  //   lineColor: new util.Color('black'),
-  //   fillColor: new util.Color('black'),
-  //   opacity: undefined, depth: -11, interpolate: true,
-  // });
-  box_outline = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'box_outline', units : undefined, 
-    image : 'stimuli/box_outline.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -10.0 
+  box_outline = new visual.Rect ({
+    win: psychoJS.window, name: 'box_outline', 
+    width: [0.2, 0.2][0], height: [0.2, 0.2][1],
+    ori: 0.0, pos: fish_loc[0],
+    anchor: 'center',
+    lineWidth: 5.0, 
+    colorSpace: 'rgb',
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0.5, depth: -10, interpolate: true,
   });
-  box_show = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'box_show', units : undefined, 
-    image : 'stimuli/box_outline.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -11.0 
+   box_show = new visual.Rect ({
+    win: psychoJS.window, name: 'box_show', 
+    width: [0.2, 0.2][0], height: [0.2, 0.2][1],
+    ori: 0.0, pos: fish_loc[0],
+    anchor: 'center',
+    lineWidth: 5.0, 
+    colorSpace: 'rgb',
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0.5, depth: -11, interpolate: true,
   });
+  // box_outline = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'box_outline', units : undefined, 
+  //   image : 'stimuli/box_outline.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -10.0 
+  // });
+  // box_show = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'box_show', units : undefined, 
+  //   image : 'stimuli/box_outline.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -11.0 
+  // });
   
   fish_key_button = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
@@ -875,9 +875,9 @@ async function experimentInit() {
     anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
-    lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
-    opacity: undefined, depth: -9, interpolate: true,
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0, depth: -9, interpolate: true,
   });
   
   boxY = new visual.Rect ({
@@ -887,9 +887,9 @@ async function experimentInit() {
     anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
-    lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
-    opacity: undefined, depth: -10, interpolate: true,
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0, depth: -10, interpolate: true,
   });
   
   boxG = new visual.Rect ({
@@ -899,32 +899,32 @@ async function experimentInit() {
     anchor: 'center',
     lineWidth: 5.0, 
     colorSpace: 'rgb',
-    lineColor: new util.Color(undefined),
-    fillColor: new util.Color(undefined),
-    opacity: undefined, depth: -11, interpolate: true,
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0, depth: -11, interpolate: true,
   });
   
-  // box_outline2 = new visual.Rect ({
-  //   win: psychoJS.window, name: 'box_outline2', 
-  //   width: [0.2, 0.2][0], height: [0.2, 0.2][1],
-  //   ori: 0.0, pos: fish_loc[0],
-  //   anchor: 'center',
-  //   lineWidth: 5.0, 
-  //   colorSpace: 'rgb',
-  //   lineColor: new util.Color('black'),
-  //   fillColor: new util.Color('black'),
-  //   opacity: undefined, depth: -12, interpolate: true,
-  // });
-  box_outline2 = new visual.ImageStim({
-    win : psychoJS.window,
-    name : 'box_outline2', units : undefined, 
-    image : 'stimuli/box_outline.png', mask : undefined,
-    anchor : 'center',
-    ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
-    color : new util.Color([1,1,1]), opacity : undefined,
-    flipHoriz : false, flipVert : false,
-    texRes : 128.0, interpolate : true, depth : -12.0 
+  box_outline2 = new visual.Rect ({
+    win: psychoJS.window, name: 'box_outline2', 
+    width: [0.2, 0.2][0], height: [0.2, 0.2][1],
+    ori: 0.0, pos: fish_loc[0],
+    anchor: 'center',
+    lineWidth: 5.0, 
+    colorSpace: 'rgb',
+    lineColor: new util.Color('black'),
+    fillColor: new util.Color('white'),
+    opacity: 0.5, depth: -12, interpolate: true,
   });
+  // box_outline2 = new visual.ImageStim({
+  //   win : psychoJS.window,
+  //   name : 'box_outline2', units : undefined, 
+  //   image : 'stimuli/box_outline.png', mask : undefined,
+  //   anchor : 'center',
+  //   ori : 0.0, pos : arrow_loc, size : [0.2, 0.2],
+  //   color : new util.Color([1,1,1]), opacity : undefined,
+  //   flipHoriz : false, flipVert : false,
+  //   texRes : 128.0, interpolate : true, depth : -12.0 
+  // });
   
   // Initialize components for Routine "block_break"
   block_breakClock = new util.Clock();
@@ -1954,15 +1954,18 @@ function response_practiceRoutineBegin(snapshot) {
     } else {
         if (((key_resp_2.keys === "1") || (key_resp_2.keys === "left"))) {
             var time = new Date();
-            boxB_2.lineColor = "black";
+            // boxB_2.lineColor = "black";
+            boxB_2.opacity = 0.5;
         } else {
             if (((key_resp_2.keys === "2") || (key_resp_2.keys === "up"))) {
                 var time = new Date();
-                boxY_2.lineColor = "black";
+                // boxY_2.lineColor = "black";
+                boxY_2.opacity = 0.5;
             } else {
                 if (((key_resp_2.keys === "3") || (key_resp_2.keys === "right"))) {
                     var time = new Date();
-                    boxG_2.lineColor = "black";
+                    // boxG_2.lineColor = "black";
+                    boxG_2.opacity = 0.5;
                 }
             }
         }
@@ -2233,6 +2236,9 @@ function response_practiceRoutineEnd(snapshot) {
     boxB_2.lineColor = "none";
     boxY_2.lineColor = "none";
     boxG_2.lineColor = "none";
+    // boxB_2.opacity = 0;
+    // boxY_2.opacity = 0;
+    // boxG_2.opacity = 0;
     
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
