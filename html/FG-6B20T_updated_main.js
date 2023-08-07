@@ -16,7 +16,7 @@ let expName = 'FG-6B20T_updated_main';  // from the Builder filename that create
 let expInfo = {
     'participant': '99',
 };
-let thisExp = psychoJS.experiment;
+
 
 // Start code blocks for 'Before Experiment'
 // Run 'Before Experiment' code from mainCode
@@ -118,7 +118,7 @@ psychoJS.start({
 
 psychoJS.experimentLogger.setLevel(core.Logger.ServerLevel.DEBUG);
 
-
+let thisExp = psychoJS.experiment;
 var currentLoop;
 var frameDur;
 async function updateInfo() {
