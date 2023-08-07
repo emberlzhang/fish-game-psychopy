@@ -2233,12 +2233,12 @@ function response_practiceRoutineEnd(snapshot) {
       }
     }
     // Run 'End Routine' code from boxClear_2
-    boxB_2.lineColor = "none";
-    boxY_2.lineColor = "none";
-    boxG_2.lineColor = "none";
-    // boxB_2.opacity = 0;
-    // boxY_2.opacity = 0;
-    // boxG_2.opacity = 0;
+    // boxB_2.lineColor = "none";
+    // boxY_2.lineColor = "none";
+    // boxG_2.lineColor = "none";
+    boxB_2.opacity = 0;
+    boxY_2.opacity = 0;
+    boxG_2.opacity = 0;
     
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
@@ -2743,14 +2743,17 @@ function response_fishRoutineBegin(snapshot) {
         if (((fish_key_button.keys === "1") || (fish_key_button.keys === "left"))) {
             // time = core.getTime();
             boxB.lineColor = "black";
+            boxB.opacity = 0;
         } else {
             if (((fish_key_button.keys === "2") || (fish_key_button.keys === "up"))) {
                 // time = core.getTime();
-                boxY.lineColor = "black";
+                // boxY.lineColor = "black";
+                boxY.opacity = 0;
             } else {
                 if (((fish_key_button.keys === "3") || (fish_key_button.keys === "right"))) {
                     // time = core.getTime();
-                    boxG.lineColor = "black";
+                    // boxG.lineColor = "black";
+                    boxG.opacity = 0;
                 }
             }
         }
@@ -3001,9 +3004,12 @@ function response_fishRoutineEnd(snapshot) {
       }
     }
     // Run 'End Routine' code from boxClear
-    boxB.lineColor = "none";
-    boxY.lineColor = "none";
-    boxG.lineColor = "none";
+    // boxB.lineColor = "none";
+    // boxY.lineColor = "none";
+    // boxG.lineColor = "none";
+    boxB.opacity = 0;
+    boxY.opacity = 0;
+    boxG.opacity = 0;
     thisExp.addData("fish_interval", fish_int);
     thisExp.addData("key_time", time);
     
