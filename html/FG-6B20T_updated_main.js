@@ -1938,6 +1938,7 @@ function option_practiceRoutineEnd(snapshot) {
 
 
 var response_practiceComponents;
+var time;
 function response_practiceRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1954,17 +1955,17 @@ function response_practiceRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (((key_resp_2.keys === "1") || (key_resp_2.keys === "left"))) {
-            var time = new Date();
+            time = new Date();
             // boxB_2.lineColor = "black";
             boxB_2.opacity = 0.5;
         } else {
             if (((key_resp_2.keys === "2") || (key_resp_2.keys === "up"))) {
-                var time = new Date();
+                time = new Date();
                 // boxY_2.lineColor = "black";
                 boxY_2.opacity = 0.5;
             } else {
                 if (((key_resp_2.keys === "3") || (key_resp_2.keys === "right"))) {
-                    var time = new Date();
+                    time = new Date();
                     // boxG_2.lineColor = "black";
                     boxG_2.opacity = 0.5;
                 }
@@ -2726,6 +2727,7 @@ function option_fishRoutineEnd(snapshot) {
 
 
 var response_fishComponents;
+var resp_time;
 function response_fishRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2742,17 +2744,17 @@ function response_fishRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (((fish_key_button.keys === "1") || (fish_key_button.keys === "left"))) {
-            // time = core.getTime();
-            boxB.lineColor = "black";
+          resp_time = new Date();
+            // boxB.lineColor = "black";
             boxB.opacity = 0;
         } else {
             if (((fish_key_button.keys === "2") || (fish_key_button.keys === "up"))) {
-                // time = core.getTime();
+              resp_time = new Date();
                 // boxY.lineColor = "black";
                 boxY.opacity = 0;
             } else {
                 if (((fish_key_button.keys === "3") || (fish_key_button.keys === "right"))) {
-                    // time = core.getTime();
+                  resp_time = new Date();
                     // boxG.lineColor = "black";
                     boxG.opacity = 0;
                 }
@@ -3015,7 +3017,7 @@ function response_fishRoutineEnd(snapshot) {
     // thisExp.addData("fish_interval", fish_int);
     // thisExp.addData("key_time", time);
     psychoJS.experiment.addData("fish_interval", fish_int);
-    psychoJS.experiment.addData("key_time", time);
+    psychoJS.experiment.addData("key_time", resp_time);
     
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
