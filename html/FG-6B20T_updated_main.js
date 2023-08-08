@@ -12,9 +12,9 @@ const { round } = util;
 
 
 // store info about the experiment session:
-let expName = 'FG-6B20T_updated_main';  // from the Builder filename that created this script
+let expName = 'Fish_Game';  // from the Builder filename that created this script
 let expInfo = {
-    'participant': '99',
+    'participant': '',
 };
 
 
@@ -3011,8 +3011,11 @@ function response_fishRoutineEnd(snapshot) {
     boxB.opacity = 0;
     boxY.opacity = 0;
     boxG.opacity = 0;
-    thisExp.addData("fish_interval", fish_int);
-    thisExp.addData("key_time", time);
+    
+    // thisExp.addData("fish_interval", fish_int);
+    // thisExp.addData("key_time", time);
+    psychoJS.experiment.addData("fish_interval", fish_int);
+    psychoJS.experiment.addData("key_time", time);
     
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
