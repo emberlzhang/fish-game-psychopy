@@ -1938,7 +1938,6 @@ function option_practiceRoutineEnd(snapshot) {
 
 
 var response_practiceComponents;
-var time;
 function response_practiceRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -1955,17 +1954,17 @@ function response_practiceRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (((key_resp_2.keys === "1") || (key_resp_2.keys === "left"))) {
-            time = new Date();
+            var time = new Date();
             // boxB_2.lineColor = "black";
             boxB_2.opacity = 0.5;
         } else {
             if (((key_resp_2.keys === "2") || (key_resp_2.keys === "up"))) {
-                time = new Date();
+              var time = new Date();
                 // boxY_2.lineColor = "black";
                 boxY_2.opacity = 0.5;
             } else {
                 if (((key_resp_2.keys === "3") || (key_resp_2.keys === "right"))) {
-                    time = new Date();
+                    var time = new Date();
                     // boxG_2.lineColor = "black";
                     boxG_2.opacity = 0.5;
                 }
@@ -3041,7 +3040,8 @@ function block_breakRoutineBegin(snapshot) {
     routineTimer.add(5.000000);
     // update component parameters for each repeat
     // Run 'Begin Routine' code from reward_list
-    block_correct.append(nCorr);
+    // block_correct.append(nCorr);
+    block_correct.push(nCorr);
     
     // keep track of which components have finished
     block_breakComponents = [];
