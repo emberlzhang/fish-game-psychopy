@@ -2745,17 +2745,17 @@ function response_fishRoutineBegin(snapshot) {
         if (((fish_key_button.keys === "1") || (fish_key_button.keys === "left"))) {
           resp_time = new Date();
             // boxB.lineColor = "black";
-            boxB.opacity = 0;
+            boxB.opacity = 0.5;
         } else {
             if (((fish_key_button.keys === "2") || (fish_key_button.keys === "up"))) {
               resp_time = new Date();
                 // boxY.lineColor = "black";
-                boxY.opacity = 0;
+                boxY.opacity = 0.5;
             } else {
                 if (((fish_key_button.keys === "3") || (fish_key_button.keys === "right"))) {
                   resp_time = new Date();
                     // boxG.lineColor = "black";
-                    boxG.opacity = 0;
+                    boxG.opacity = 0.5;
                 }
             }
         }
