@@ -1,11 +1,11 @@
 # FishTask
 
-PsychoPy Fish Game 6 Block 20 trials Version 2022 August by Rupak Krishnamurthy
+PsychoPy Fish Game Version 2023 by Janet Chang
 
-Adopted from a previous version developed by Qixiu Fu
+Adapted from PsychoPy Version 2022 August by Rupak Krishnamurthy
+and previous version developed by Qixiu Fu
 
 Input/Response setting 
-
 
     Hard-coded button press from a keyboard 
 
@@ -13,10 +13,10 @@ Input/Response setting
 
 Experimental flow 
 
-    Instruction 
+    Instructions 
 
-    Practice (20 trials) with feedback
+    Practice (2 blocks x 15 trials) with feedback
 
-    6 blocks (20 trials each) 
+    Task (10 blocks x 15 trials each) no feedback 
 
     Close screen  

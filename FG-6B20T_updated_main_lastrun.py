@@ -1905,7 +1905,7 @@ thisExp.nextEntry()
 routineTimer.reset()
 
 # set up handler to look after randomisation of conditions etc
-block = data.TrialHandler(nReps=1.0, method='random', 
+block = data.TrialHandler(nReps=1.0, method='sequential', 
     extraInfo=expInfo, originPath=-1,
     trialList=data.importConditions('1condition/Blocks.xlsx'),
     seed=None, name='block')

@@ -105,14 +105,31 @@ psychoJS.start({
     {'name': 'stimuli/jars.PNG', 'path': 'resources/stimuli/jars.PNG'},
     {'name': 'stimuli/pond_selector_box.png', 'path': 'resources/stimuli/pond_selector_box.png'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
-    {'name': '1condition/practice.xlsx', 'path': 'resources/1condition/practice.xlsx'},
-    {'name': '1condition/Blocks.xlsx', 'path': 'resources/1condition/Blocks.xlsx'},
-    {'name': '1condition/trialsB1.xlsx', 'path': 'resources/1condition/trialsB1.xlsx'},
-    {'name': '1condition/trialsB2.xlsx', 'path': 'resources/1condition/trialsB2.xlsx'},
-    {'name': '1condition/trialsB3.xlsx', 'path': 'resources/1condition/trialsB3.xlsx'},
-    {'name': '1condition/trialsB4.xlsx', 'path': 'resources/1condition/trialsB4.xlsx'},
-    {'name': '1condition/trialsB5.xlsx', 'path': 'resources/1condition/trialsB5.xlsx'},
-    {'name': '1condition/trialsB6.xlsx', 'path': 'resources/1condition/trialsB6.xlsx'},
+    // old block and trial assignments
+    // {'name': '1condition/practice.xlsx', 'path': 'resources/1condition/practice.xlsx'},
+    // {'name': '1condition/Blocks.xlsx', 'path': 'resources/1condition/Blocks.xlsx'},
+    // {'name': '1condition/trialsB1.xlsx', 'path': 'resources/1condition/trialsB1.xlsx'},
+    // {'name': '1condition/trialsB2.xlsx', 'path': 'resources/1condition/trialsB2.xlsx'},
+    // {'name': '1condition/trialsB3.xlsx', 'path': 'resources/1condition/trialsB3.xlsx'},
+    // {'name': '1condition/trialsB4.xlsx', 'path': 'resources/1condition/trialsB4.xlsx'},
+    // {'name': '1condition/trialsB5.xlsx', 'path': 'resources/1condition/trialsB5.xlsx'},
+    // {'name': '1condition/trialsB6.xlsx', 'path': 'resources/1condition/trialsB6.xlsx'},
+    // new block and trial assignments
+    {'name': '1condition/practiceTrials1.xlsx', 'path': 'resources/1condition/practiceTrials1.xlsx'},
+    {'name': '1condition/practiceTrials2.xlsx', 'path': 'resources/1condition/practiceTrials2.xlsx'},
+    {'name': '1condition/blockOrderA.xlsx', 'path': 'resources/1condition/blockOrderA.xlsx'},
+    {'name': '1condition/blockOrderB.xlsx', 'path': 'resources/1condition/blockOrderB.xlsx'},
+    {'name': '1condition/blockOrderC.xlsx', 'path': 'resources/1condition/blockOrderC.xlsx'},
+    {'name': '1condition/mainTrials1.xlsx', 'path': 'resources/1condition/mainTrials1.xlsx'},
+    {'name': '1condition/mainTrials2.xlsx', 'path': 'resources/1condition/mainTrials2.xlsx'},
+    {'name': '1condition/mainTrials3.xlsx', 'path': 'resources/1condition/mainTrials3.xlsx'},
+    {'name': '1condition/mainTrials4.xlsx', 'path': 'resources/1condition/mainTrials4.xlsx'},
+    {'name': '1condition/mainTrials5.xlsx', 'path': 'resources/1condition/mainTrials5.xlsx'},
+    {'name': '1condition/mainTrials6.xlsx', 'path': 'resources/1condition/mainTrials6.xlsx'},
+    {'name': '1condition/mainTrials7.xlsx', 'path': 'resources/1condition/mainTrials7.xlsx'},
+    {'name': '1condition/mainTrials8.xlsx', 'path': 'resources/1condition/mainTrials8.xlsx'},
+    {'name': '1condition/mainTrials9.xlsx', 'path': 'resources/1condition/mainTrials9.xlsx'},
+    {'name': '1condition/mainTrials10.xlsx', 'path': 'resources/1condition/mainTrials10.xlsx'}
   ]
   });
 
@@ -1477,7 +1494,7 @@ function prac_trialsLoopBegin(prac_trialsLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: '1condition/practice.xlsx',
+      trialList: '1condition/practiceTrials1.xlsx',
       seed: undefined, name: 'prac_trials'
     });
     psychoJS.experiment.addLoop(prac_trials); // add the loop to the experiment
@@ -1533,7 +1550,26 @@ function prac_trialsLoopEndIteration(scheduler, snapshot) {
 }
 
 
+
 var block;
+
+// determine which of 3 block orders to do
+var block_nums = [1,2,3];
+var assigned_block; 
+var assigned_block_num = util.randChoice(block_nums);
+console.log(assigned_block_num)
+switch (assigned_block_num){
+  case 1:
+    assigned_block = '1condition/blockOrderA.xlsx';
+    break;
+  case 2:
+    assigned_block = '1condition/blockOrderB.xlsx';
+    break;
+  case 3:
+    assigned_block = '1condition/blockOrderC.xlsx';
+    break;
+}
+
 function blockLoopBegin(blockLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -1543,7 +1579,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
-      trialList: '1condition/Blocks.xlsx',
+      trialList: assigned_block,
       seed: undefined, name: 'block'
     });
     psychoJS.experiment.addLoop(block); // add the loop to the experiment
@@ -1581,7 +1617,7 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: condsFile,
+      trialList: condsFile, // references the "condsFile" column in blockOrder excel file, which has block order
       seed: undefined, name: 'trials'
     });
     psychoJS.experiment.addLoop(trials); // add the loop to the experiment
