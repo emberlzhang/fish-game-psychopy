@@ -105,15 +105,6 @@ psychoJS.start({
     {'name': 'stimuli/jars.PNG', 'path': 'resources/stimuli/jars.PNG'},
     {'name': 'stimuli/pond_selector_box.png', 'path': 'resources/stimuli/pond_selector_box.png'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
-    // old block and trial assignments
-    // {'name': '1condition/practice.xlsx', 'path': 'resources/1condition/practice.xlsx'},
-    // {'name': '1condition/Blocks.xlsx', 'path': 'resources/1condition/Blocks.xlsx'},
-    // {'name': '1condition/trialsB1.xlsx', 'path': 'resources/1condition/trialsB1.xlsx'},
-    // {'name': '1condition/trialsB2.xlsx', 'path': 'resources/1condition/trialsB2.xlsx'},
-    // {'name': '1condition/trialsB3.xlsx', 'path': 'resources/1condition/trialsB3.xlsx'},
-    // {'name': '1condition/trialsB4.xlsx', 'path': 'resources/1condition/trialsB4.xlsx'},
-    // {'name': '1condition/trialsB5.xlsx', 'path': 'resources/1condition/trialsB5.xlsx'},
-    // {'name': '1condition/trialsB6.xlsx', 'path': 'resources/1condition/trialsB6.xlsx'},
     // new block and trial assignments
     {'name': '1condition/practiceTrials1.xlsx', 'path': 'resources/1condition/practiceTrials1.xlsx'},
     {'name': '1condition/practiceTrials2.xlsx', 'path': 'resources/1condition/practiceTrials2.xlsx'},
@@ -949,7 +940,7 @@ async function experimentInit() {
   breakStart_txt = new visual.TextStim({
     win: psychoJS.window,
     name: 'breakStart_txt',
-    text: 'End of the day.\n\nNew day starts soon.',
+    text: 'End of the day.\n\nYou now have a few seconds of break.',
     font: 'Open Sans',
     units: undefined, 
     pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
@@ -1571,7 +1562,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     block = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 1, method: TrialHandler.Method.RANDOM,
+      nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
       trialList: assigned_block_order,
       seed: undefined, name: 'block'
@@ -1614,9 +1605,11 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
       trialList: condsFile, // references the "condsFile" column in blockOrder excel file, which has block order
       seed: undefined, name: 'trials'
     });
+    psychoJS.experiment.addData("block assignment", condsFile);
+    console.log("this block assignment" + condsFile)
     psychoJS.experiment.addLoop(trials); // add the loop to the experiment
     currentLoop = trials;  // we're now the current loop
-    
+
     // Schedule all the trials in the trialList:
     for (const thisTrial of trials) {
       snapshot = trials.getSnapshot();
@@ -2411,6 +2404,8 @@ function waitRoutineEnd(snapshot) {
 
 var nCorr;
 var reward_resetComponents;
+var block_counter = 0;
+
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
@@ -2423,7 +2418,10 @@ function reward_resetRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from rewardReset
     nCorr = 0;
-    
+    block_counter += 1;
+    console.log("current block number: " + block_counter)
+    console.log("current block name: _______")
+
     // keep track of which components have finished
     reward_resetComponents = [];
     
