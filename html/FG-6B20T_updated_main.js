@@ -1553,22 +1553,16 @@ function prac_trialsLoopEndIteration(scheduler, snapshot) {
 
 var block;
 
-// determine which of 3 block orders to do
-var block_nums = [1,2,3];
-var assigned_block; 
-var assigned_block_num = util.randChoice(block_nums);
-console.log(assigned_block_num)
-switch (assigned_block_num){
-  case 1:
-    assigned_block = '1condition/blockOrderA.xlsx';
-    break;
-  case 2:
-    assigned_block = '1condition/blockOrderB.xlsx';
-    break;
-  case 3:
-    assigned_block = '1condition/blockOrderC.xlsx';
-    break;
-}
+// Choose a semi-randomzied block order to use for this user session
+var block_order_options = [
+  '1condition/blockOrderA.xlsx',
+  '1condition/blockOrderB.xlsx',
+  '1condition/blockOrderC.xlsx'
+];
+var randomIndex = Math.floor(Math.random() * block_order_options.length);
+console.log("random index: " + randomIndex)
+var assigned_block_order = block_order_options[randomIndex];
+console.log("assigned block order: " + assigned_block_order)
 
 function blockLoopBegin(blockLoopScheduler, snapshot) {
   return async function() {
@@ -1579,7 +1573,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.RANDOM,
       extraInfo: expInfo, originPath: undefined,
-      trialList: assigned_block,
+      trialList: assigned_block_order,
       seed: undefined, name: 'block'
     });
     psychoJS.experiment.addLoop(block); // add the loop to the experiment
