@@ -2771,17 +2771,20 @@ function response_fishRoutineBegin(snapshot) {
         continueRoutine = false;
     } else {
         if (((fish_key_button.keys === "1") || (fish_key_button.keys === "left"))) {
-          resp_time = new Date();
+          // resp_time = new Date();
+          resp_time = globalClock.getTime();
             // boxB.lineColor = "black";
             boxB.opacity = 0.5;
         } else {
             if (((fish_key_button.keys === "2") || (fish_key_button.keys === "up"))) {
-              resp_time = new Date();
+              // resp_time = new Date();
+              resp_time = globalClock.getTime();
                 // boxY.lineColor = "black";
                 boxY.opacity = 0.5;
             } else {
                 if (((fish_key_button.keys === "3") || (fish_key_button.keys === "right"))) {
-                  resp_time = new Date();
+                  // resp_time = new Date();
+                  resp_time = globalClock.getTime();
                     // boxG.lineColor = "black";
                     boxG.opacity = 0.5;
                 }
@@ -3044,7 +3047,7 @@ function response_fishRoutineEnd(snapshot) {
     // thisExp.addData("fish_interval", fish_int);
     // thisExp.addData("key_time", time);
     psychoJS.experiment.addData("fish_interval", fish_int);
-    psychoJS.experiment.addData("key_time", resp_time);
+    psychoJS.experiment.addData("key_resp_time", resp_time);
     
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
