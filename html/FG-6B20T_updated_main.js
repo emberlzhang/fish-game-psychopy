@@ -1606,7 +1606,7 @@ function trialsLoopBegin(trialsLoopScheduler, snapshot) {
       seed: undefined, name: 'trials'
     });
     psychoJS.experiment.addData("block assignment", condsFile);
-    console.log("this block assignment" + condsFile)
+    console.log("current block assignment" + condsFile)
     psychoJS.experiment.addLoop(trials); // add the loop to the experiment
     currentLoop = trials;  // we're now the current loop
 
@@ -2419,9 +2419,8 @@ function reward_resetRoutineBegin(snapshot) {
     // Run 'Begin Routine' code from rewardReset
     nCorr = 0;
     block_counter += 1;
-    console.log("current block number: " + block_counter)
-    console.log("current block name: _______")
-
+    console.log("current block: " + block_counter)
+    psychoJS.experiment.addData("block number", block_counter)
     // keep track of which components have finished
     reward_resetComponents = [];
     
