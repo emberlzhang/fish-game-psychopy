@@ -1474,6 +1474,40 @@ function ins3RoutineEnd(snapshot) {
   }
 }
 
+// function pracBlockLoopBegin(pracBlockLoopScheduler, snapshot) {
+//   return async function() {
+//     TrialHandler.fromSnapshot(snapshot); 
+    
+//     pracBlock = new TrialHandler({
+//       psychoJS: psychoJS,
+//       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+//       extraInfo: expInfo, originPath: undefined,
+//       trialList: ['1condition/practiceTrials1.xlsx', '1condition/practiceTrials2.xlsx'],
+//       seed: undefined, name: 'pracBlock'
+//     });
+//     psychoJS.experiment.addLoop(pracBlock); // add the loop to the experiment
+//     currentLoop = block;  // we're now the current loop
+    
+//     // Schedule all the trials in the trialList:
+//     for (const thisBlock of pracBlock) {
+//       snapshot = pracBlock.getSnapshot();
+//       pracBlockLoopScheduler.add(importConditions(snapshot));
+//       pracBlockLoopScheduler.add(reward_resetRoutineBegin(snapshot));
+//       pracBlockLoopScheduler.add(reward_resetRoutineEachFrame());
+//       pracBlockLoopScheduler.add(reward_resetRoutineEnd(snapshot));
+//       const trialsLoopScheduler = new Scheduler(psychoJS);
+//       pracBlockLoopScheduler.add(trialsLoopBegin(trialsLoopScheduler, snapshot));
+//       pracBlockLoopScheduler.add(trialsLoopScheduler);
+//       pracBlockLoopScheduler.add(trialsLoopEnd);
+//       pracBlockLoopScheduler.add(pracBlock_breakRoutineBegin(snapshot));
+//       pracBlockLoopScheduler.add(pracBlock_breakRoutineEachFrame());
+//       pracBlockLoopScheduler.add(pracBlock_breakRoutineEnd(snapshot));
+//       pracBlockLoopScheduler.add(pracBlockLoopEndIteration(pracBlockLoopScheduler, snapshot));
+//     }
+    
+//     return Scheduler.Event.NEXT;
+//   }
+// }
 
 var prac_trials;
 function prac_trialsLoopBegin(prac_trialsLoopScheduler, snapshot) {
@@ -1485,7 +1519,7 @@ function prac_trialsLoopBegin(prac_trialsLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: '1condition/practiceTrials1.xlsx',
+      trialList: ['1condition/practiceTrials1.xlsx', '1condition/practiceTrials2.xlsx'],
       seed: undefined, name: 'prac_trials'
     });
     psychoJS.experiment.addLoop(prac_trials); // add the loop to the experiment
