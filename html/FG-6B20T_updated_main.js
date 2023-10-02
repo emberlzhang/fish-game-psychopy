@@ -68,17 +68,30 @@ flowScheduler.add(ins2RoutineEnd());
 flowScheduler.add(ins3RoutineBegin());
 flowScheduler.add(ins3RoutineEachFrame());
 flowScheduler.add(ins3RoutineEnd());
-const prac_trialsLoopScheduler = new Scheduler(psychoJS);
-flowScheduler.add(prac_trialsLoopBegin(prac_trialsLoopScheduler));
-flowScheduler.add(prac_trialsLoopScheduler);
-flowScheduler.add(prac_trialsLoopEnd);
+//start new stuff
+const prac_blockLoopScheduler = new Scheduler(psychoJS);
+flowScheduler.add(prac_blockLoopBegin(prac_blockLoopScheduler));
+flowScheduler.add(prac_blockLoopScheduler);
+flowScheduler.add(prac_blockLoopEnd);
+// flowScheduler.add(prac_resetRoutineBegin());
+// flowScheduler.add(prac_resetRoutineEachFrame());
+// flowScheduler.add(prac_resetRoutineEnd());
+//end new stuff
+
+// const prac_trialsLoopScheduler = new Scheduler(psychoJS);
+// flowScheduler.add(prac_trialsLoopBegin(prac_trialsLoopScheduler));
+// flowScheduler.add(prac_trialsLoopScheduler);
+// flowScheduler.add(prac_trialsLoopEnd);
+// transition text from practice to real trials: You have finished the practice. Now you will begin. 
 flowScheduler.add(waitRoutineBegin());
 flowScheduler.add(waitRoutineEachFrame());
 flowScheduler.add(waitRoutineEnd());
+// loop of main blocks
 const blockLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(blockLoopBegin(blockLoopScheduler));
 flowScheduler.add(blockLoopScheduler);
 flowScheduler.add(blockLoopEnd);
+// message indicating end of experiment: "Thank you"
 flowScheduler.add(rewardRoutineBegin());
 flowScheduler.add(rewardRoutineEachFrame());
 flowScheduler.add(rewardRoutineEnd());
@@ -1473,41 +1486,44 @@ function ins3RoutineEnd(snapshot) {
     return Scheduler.Event.NEXT;
   }
 }
+var pracBlock;
+var practice_on;
+function prac_blockLoopBegin(prac_blockLoopScheduler, snapshot) {
+  return async function() {
+    TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
+    
+    // set up handler to look after randomisation of conditions etc
+    pracBlock = new TrialHandler({
+      psychoJS: psychoJS,
+      nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+      extraInfo: expInfo, originPath: undefined,
+      trialList: '1condition/practiceBlockOrder.xlsx',
+      seed: undefined, name: 'pracBlock'
+    });
+    psychoJS.experiment.addLoop(pracBlock); // add the loop to the experiment
+    currentLoop = pracBlock;  // we're now the current loop
+    practice_on = true; // true because we are in the practice session
 
-// function pracBlockLoopBegin(pracBlockLoopScheduler, snapshot) {
-//   return async function() {
-//     TrialHandler.fromSnapshot(snapshot); 
+    // Schedule all the trials in the trialList:
+    for (const thisBlock of pracBlock) {
+      snapshot = pracBlock.getSnapshot();
+      prac_blockLoopScheduler.add(importConditions(snapshot));
+      // prac_blockLoopScheduler.add(reward_resetRoutineBegin(snapshot));
+      // prac_blockLoopScheduler.add(reward_resetRoutineEachFrame());
+      // prac_blockLoopScheduler.add(reward_resetRoutineEnd(snapshot));
+      const prac_trialsLoopScheduler = new Scheduler(psychoJS);
+      prac_blockLoopScheduler.add(prac_trialsLoopBegin(prac_trialsLoopScheduler, snapshot));
+      prac_blockLoopScheduler.add(prac_trialsLoopScheduler);
+      prac_blockLoopScheduler.add(prac_trialsLoopEnd);
+      prac_blockLoopScheduler.add(block_breakRoutineBegin(snapshot));
+      prac_blockLoopScheduler.add(block_breakRoutineEachFrame());
+      prac_blockLoopScheduler.add(block_breakRoutineEnd(snapshot));
+      prac_blockLoopScheduler.add(pracBlockLoopEndIteration(prac_blockLoopScheduler, snapshot));
+    }
     
-//     pracBlock = new TrialHandler({
-//       psychoJS: psychoJS,
-//       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
-//       extraInfo: expInfo, originPath: undefined,
-//       trialList: ['1condition/practiceTrials1.xlsx', '1condition/practiceTrials2.xlsx'],
-//       seed: undefined, name: 'pracBlock'
-//     });
-//     psychoJS.experiment.addLoop(pracBlock); // add the loop to the experiment
-//     currentLoop = block;  // we're now the current loop
-    
-//     // Schedule all the trials in the trialList:
-//     for (const thisBlock of pracBlock) {
-//       snapshot = pracBlock.getSnapshot();
-//       pracBlockLoopScheduler.add(importConditions(snapshot));
-//       pracBlockLoopScheduler.add(reward_resetRoutineBegin(snapshot));
-//       pracBlockLoopScheduler.add(reward_resetRoutineEachFrame());
-//       pracBlockLoopScheduler.add(reward_resetRoutineEnd(snapshot));
-//       const trialsLoopScheduler = new Scheduler(psychoJS);
-//       pracBlockLoopScheduler.add(trialsLoopBegin(trialsLoopScheduler, snapshot));
-//       pracBlockLoopScheduler.add(trialsLoopScheduler);
-//       pracBlockLoopScheduler.add(trialsLoopEnd);
-//       pracBlockLoopScheduler.add(pracBlock_breakRoutineBegin(snapshot));
-//       pracBlockLoopScheduler.add(pracBlock_breakRoutineEachFrame());
-//       pracBlockLoopScheduler.add(pracBlock_breakRoutineEnd(snapshot));
-//       pracBlockLoopScheduler.add(pracBlockLoopEndIteration(pracBlockLoopScheduler, snapshot));
-//     }
-    
-//     return Scheduler.Event.NEXT;
-//   }
-// }
+    return Scheduler.Event.NEXT;
+  }
+}
 
 var prac_trials;
 function prac_trialsLoopBegin(prac_trialsLoopScheduler, snapshot) {
@@ -1519,7 +1535,7 @@ function prac_trialsLoopBegin(prac_trialsLoopScheduler, snapshot) {
       psychoJS: psychoJS,
       nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
-      trialList: ['1condition/practiceTrials1.xlsx', '1condition/practiceTrials2.xlsx'],
+      trialList: pracBlocksFile,
       seed: undefined, name: 'prac_trials'
     });
     psychoJS.experiment.addLoop(prac_trials); // add the loop to the experiment
@@ -1542,10 +1558,9 @@ function prac_trialsLoopBegin(prac_trialsLoopScheduler, snapshot) {
   }
 }
 
-
 async function prac_trialsLoopEnd() {
   // terminate loop
-  psychoJS.experiment.removeLoop(prac_trials);
+  psychoJS.experiment.removeLoop(trials);
   // update the current loop from the ExperimentHandler
   if (psychoJS.experiment._unfinishedLoops.length>0)
     currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
@@ -1575,6 +1590,38 @@ function prac_trialsLoopEndIteration(scheduler, snapshot) {
 }
 
 
+async function prac_blockLoopEnd() {
+  // terminate loop
+  psychoJS.experiment.removeLoop(block);
+  // update the current loop from the ExperimentHandler
+  if (psychoJS.experiment._unfinishedLoops.length>0)
+    currentLoop = psychoJS.experiment._unfinishedLoops.at(-1);
+  else
+    currentLoop = psychoJS.experiment;  // so we use addData from the experiment
+  return Scheduler.Event.NEXT;
+}
+
+
+function pracBlockLoopEndIteration(scheduler, snapshot) {
+  // ------Prepare for next entry------
+  return async function () {
+    if (typeof snapshot !== 'undefined') {
+      // ------Check if user ended loop early------
+      if (snapshot.finished) {
+        // Check for and save orphaned data
+        if (psychoJS.experiment.isEntryEmpty()) {
+          psychoJS.experiment.nextEntry(snapshot);
+        }
+        scheduler.stop();
+      }
+    return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+////////////////////////// REAL BLOCKS
+
 
 var block;
 
@@ -1603,7 +1650,8 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     });
     psychoJS.experiment.addLoop(block); // add the loop to the experiment
     currentLoop = block;  // we're now the current loop
-    
+    practice_on = false; // we are no longer in practice mode
+
     // Schedule all the trials in the trialList:
     for (const thisBlock of block) {
       snapshot = block.getSnapshot();
@@ -2438,7 +2486,7 @@ function waitRoutineEnd(snapshot) {
 
 var nCorr;
 var reward_resetComponents;
-var block_counter = 0;
+var block_counter = 0; // real blocks start at counter = 1
 
 function reward_resetRoutineBegin(snapshot) {
   return async function () {
@@ -3105,7 +3153,10 @@ function block_breakRoutineBegin(snapshot) {
     // update component parameters for each repeat
     // Run 'Begin Routine' code from reward_list
     // block_correct.append(nCorr);
-    block_correct.push(nCorr);
+    
+    if (practice_on == false)
+      block_correct.push(nCorr); // skip this if doing a practice round
+    
     
     // keep track of which components have finished
     block_breakComponents = [];
