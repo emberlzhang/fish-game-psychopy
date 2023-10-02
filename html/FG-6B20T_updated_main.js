@@ -119,6 +119,7 @@ psychoJS.start({
     {'name': 'stimuli/pond_selector_box.png', 'path': 'resources/stimuli/pond_selector_box.png'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
     // new block and trial assignments
+    {'name': '1condition/practiceBlockOrder.xlsx', 'path': 'resources/1condition/practiceBlockOrder.xlsx'},
     {'name': '1condition/practiceTrials1.xlsx', 'path': 'resources/1condition/practiceTrials1.xlsx'},
     {'name': '1condition/practiceTrials2.xlsx', 'path': 'resources/1condition/practiceTrials2.xlsx'},
     {'name': '1condition/blockOrderA.xlsx', 'path': 'resources/1condition/blockOrderA.xlsx'},
