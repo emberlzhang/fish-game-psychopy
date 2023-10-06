@@ -265,7 +265,7 @@ async function experimentInit() {
     text: 'Welcome to the Fishing Game!\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0.35], height: 0.035,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.035,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('black'),  opacity: undefined,
     depth: 0.0 
@@ -290,7 +290,7 @@ async function experimentInit() {
     depth: 0
     });
   
-    // Initialize components for Routine "ins1"
+  // Initialize components for Routine "ins1"
   ins1Clock = new util.Clock();
   text_1a = new visual.TextStim({
     win: psychoJS.window,
@@ -341,7 +341,7 @@ async function experimentInit() {
     '\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, (- 0.2)], height: 0.35,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, (- 0.2)], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: 0.0 
@@ -370,7 +370,7 @@ async function experimentInit() {
     '\n\nPress any key to start the practice.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, (- 0.2)], height: 0.04,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, (- 0.2)], height: 0.045,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: 0.0 
