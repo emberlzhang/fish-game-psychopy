@@ -56,6 +56,9 @@ psychoJS.scheduleCondition(function() { return (psychoJS.gui.dialogComponent.but
 // flowScheduler gets run if the participants presses OK
 flowScheduler.add(updateInfo); // add timeStamp
 flowScheduler.add(experimentInit);
+flowScheduler.add(welcomeRoutineBegin());
+flowScheduler.add(welcomeRoutineEachFrame());
+flowScheduler.add(welcomeRoutineEnd());
 flowScheduler.add(instruct_videoRoutineBegin());
 flowScheduler.add(instruct_videoRoutineEachFrame());
 flowScheduler.add(instruct_videoRoutineEnd());
@@ -169,7 +172,9 @@ async function updateInfo() {
   return Scheduler.Event.NEXT;
 }
 
-
+var welcomeClock;
+var text_welcome;
+var welcome_key;
 var instruct_videoClock;
 var ins_videoClock;
 var ins_video;
@@ -249,7 +254,24 @@ var rewardClock;
 var reward_txt;
 var globalClock;
 var routineTimer;
+
 async function experimentInit() {
+  
+  // Initialize components for Routine "welcome"
+  welcomeClock = new util.Clock();
+  text_welcome = new visual.TextStim({
+    win: psychoJS.window,
+    name: 'text_welcome',
+    text: 'Welcome to the Fishing Game!\n\nPress any key to continue.',
+    font: 'Arial',
+    units: undefined, 
+    pos: [0, 0.35], height: 0.035,  wrapWidth: undefined, ori: 0.0,
+    languageStyle: 'LTR',
+    color: new util.Color('black'),  opacity: undefined,
+    depth: 0.0 
+  });
+  welcome_key = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
+  
   // Initialize components for Routine "instruct_video"
   instruct_videoClock = new util.Clock();
   ins_videoClock = new util.Clock();
@@ -267,20 +289,20 @@ async function experimentInit() {
     noAudio: false,
     depth: 0
     });
-  // Initialize components for Routine "ins1"
+  
+    // Initialize components for Routine "ins1"
   ins1Clock = new util.Clock();
   text_1a = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_1a',
     text: 'The Fishing Game\n\nImagine a boy that goes fishing for 10 days. There are three ponds, each containing fish of different colors: blue, yellow, and green. In each pond the majority of the fish are of a single color.',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0.35], height: 0.035,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('black'),  opacity: undefined,
     depth: 0.0 
   });
-  
   ins1_key = new core.Keyboard({psychoJS: psychoJS, clock: new util.Clock(), waitForStart: true});
   
   ins1_image = new visual.ImageStim({
@@ -296,8 +318,11 @@ async function experimentInit() {
   text_1b = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_1b',
-    text: 'Each day, the boy catches 15 fish. He will show you the fish he catches one by one, shown in the black square. Each turn, you will guess from which pond he is fishing. \n\nThe boy will pick a different pond at the beginning of a new day, and he may or may not change ponds within the same day.\n\nPress any key to continue',
-    font: 'Open Sans',
+    text: 'Each day, the boy catches 15 fish. He will show you the fish he catches one by one, shown in the black square.' +
+    '\n\nEach turn, you will guess from which pond he is fishing.' +
+    '\n\nThe boy will pick a different pond at the beginning of a new day, and he may or may not change ponds within the same day.' + 
+    '\n\nPress any key to continue.',
+    font: 'Arial',
     units: undefined, 
     pos: [0, (- 0.3)], height: 0.035,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -310,10 +335,13 @@ async function experimentInit() {
   text_2 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_2',
-    text: 'A correct guess is rewarded with $0.50, while an incorrect guess earns $0. \n\nAt the end of the game, you will receive the total bonus from one randomly selected session. The maximum bonus you can receive from this game is $7.50, if you guess correctly for all trials. \n\nPress any key to continue',
-    font: 'Open Sans',
+    text: 'A correct guess is rewarded with $1, while an incorrect guess earns $0.' +
+    '\n\nAt the end of the game, you will receive the total bonus from one randomly selected session, either from this game or the other game you play.' + 
+    '\n\nThe maximum bonus you can receive from this game is $15, if you guess correctly for all trials.' +
+    '\n\nPress any key to continue.',
+    font: 'Arial',
     units: undefined, 
-    pos: [0, (- 0.2)], height: 0.05,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, (- 0.2)], height: 0.35,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: 0.0 
@@ -336,10 +364,13 @@ async function experimentInit() {
   text_3 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_3',
-    text: 'Press LEFT, UP or RIGHT arrows to select your pond.\n\nThe game will start with a quick practice. During the practice, you will see whether you chose the right pond or not. But during the actual game, you will not get this feedback. The game takes approximately 10 minutes to complete.\n\nPress any key to start the practice',
-    font: 'Open Sans',
+    text: 'Press LEFT, UP or RIGHT arrows on your keyboard to select your pond.'+
+    '\n\nThe game will start with a quick practice. During the practice, you will see whether you chose the right pond or not. But during the actual game, you will not get this feedback.'_+
+    '\n\nThe game takes approximately 10 minutes to complete.' + 
+    '\n\nPress any key to start the practice.',
+    font: 'Arial',
     units: undefined, 
-    pos: [0, (- 0.2)], height: 0.045,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, (- 0.2)], height: 0.04,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: 0.0 
@@ -363,7 +394,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'pond_label_2',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, (- 0.1)], height: 0.1,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -503,7 +534,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'pond_label2_2',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, (- 0.1)], height: 0.1,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -656,7 +687,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'Begin_txt',
     text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue. ',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -676,7 +707,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'pond_label',
     text: '',
-    font: 'Open Sans',
+    font: 'Arial',
     units: undefined, 
     pos: [0, (- 0.1)], height: 0.1,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -954,8 +985,8 @@ async function experimentInit() {
   breakStart_txt = new visual.TextStim({
     win: psychoJS.window,
     name: 'breakStart_txt',
-    text: 'End of the day.\n\nYou now have a few seconds of break.',
-    font: 'Open Sans',
+    text: 'This day has ended.\n\nYou now have a break of 5 seconds.',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -968,8 +999,8 @@ async function experimentInit() {
   reward_txt = new visual.TextStim({
     win: psychoJS.window,
     name: 'reward_txt',
-    text: 'Thank you!',
-    font: 'Open Sans',
+    text: 'You have successfully completed the task.\n\nThank you!',
+    font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
@@ -983,6 +1014,139 @@ async function experimentInit() {
   
   return Scheduler.Event.NEXT;
 }
+
+///////////
+
+var _welcome_key_allKeys;
+var welcomeComponents;
+function welcomeRoutineBegin(snapshot) {
+  return async function () {
+    TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
+    
+    //--- Prepare to start Routine 'welcome' ---
+    t = 0;
+    welcomeClock.reset(); // clock
+    frameN = -1;
+    continueRoutine = true; // until we're told otherwise
+    // update component parameters for each repeat
+    welcome_key.keys = undefined;
+    welcome_key.rt = undefined;
+    _welcome_key_allKeys = [];
+    // keep track of which components have finished
+    welcomeComponents = [];
+    welcomeComponents.push(text_welcome);
+    welcomeComponents.push(welcome_key);
+    
+    for (const thisComponent of welcomeComponents)
+      if ('status' in thisComponent)
+        thisComponent.status = PsychoJS.Status.NOT_STARTED;
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
+function welcomeRoutineEachFrame() {
+  return async function () {
+    //--- Loop for each frame of Routine 'welcome' ---
+    // get current time
+    t = welcomeClock.getTime();
+    frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
+    // update/draw components on each frame
+    
+    // *text_welcome* updates
+    if (t >= 0.0 && text_welcome.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      text_welcome.tStart = t;  // (not accounting for frame time here)
+      text_welcome.frameNStart = frameN;  // exact frame index
+      
+      text_welcome.setAutoDraw(true);
+    }
+
+    
+    // *welcome_key* updates
+    if (t >= 0.0 && welcome_key.status === PsychoJS.Status.NOT_STARTED) {
+      // keep track of start time/frame for later
+      welcome_key.tStart = t;  // (not accounting for frame time here)
+      welcome_key.frameNStart = frameN;  // exact frame index
+      
+      // keyboard checking is just starting
+      psychoJS.window.callOnFlip(function() { welcome_key.clock.reset(); });  // t=0 on next screen flip
+      psychoJS.window.callOnFlip(function() { welcome_key.start(); }); // start on screen flip
+      psychoJS.window.callOnFlip(function() { welcome_key.clearEvents(); });
+    }
+
+    if (welcome_key.status === PsychoJS.Status.STARTED) {
+      let theseKeys = welcome_key.getKeys({keyList: [], waitRelease: false});
+      _welcome_key_allKeys = _welcome_key_allKeys.concat(theseKeys);
+      if (_welcome_key_allKeys.length > 0) {
+        welcome_key.keys = _welcome_key_allKeys[_welcome_key_allKeys.length - 1].name;  // just the last key pressed
+        welcome_key.rt = _welcome_key_allKeys[_welcome_key_allKeys.length - 1].rt;
+        welcome_key.duration = _welcome_key_allKeys[_welcome_key_allKeys.length - 1].duration;
+        // a response ends the routine
+        continueRoutine = false;
+      }
+    }
+    
+
+    // check for quit (typically the Esc key)
+    if (psychoJS.experiment.experimentEnded || psychoJS.eventManager.getKeys({keyList:['escape']}).length > 0) {
+      return quitPsychoJS('The [Escape] key was pressed. Goodbye!', false);
+    }
+    
+    // check if the Routine should terminate
+    if (!continueRoutine) {  // a component has requested a forced-end of Routine
+      return Scheduler.Event.NEXT;
+    }
+    
+    continueRoutine = false;  // reverts to True if at least one component still running
+    for (const thisComponent of welcomeComponents)
+      if ('status' in thisComponent && thisComponent.status !== PsychoJS.Status.FINISHED) {
+        continueRoutine = true;
+        break;
+      }
+    
+    // refresh the screen if continuing
+    if (continueRoutine) {
+      return Scheduler.Event.FLIP_REPEAT;
+    } else {
+      return Scheduler.Event.NEXT;
+    }
+  };
+}
+
+
+function welcomeRoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'welcome' ---
+    for (const thisComponent of welcomeComponents) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    // update the trial handler
+    if (currentLoop instanceof MultiStairHandler) {
+      currentLoop.addResponse(welcome_key.corr, level);
+    }
+    psychoJS.experiment.addData('welcome_key.keys', welcome_key.keys);
+    if (typeof welcome_key.keys !== 'undefined') {  // we had a response
+        psychoJS.experiment.addData('welcome_key.rt', welcome_key.rt);
+        psychoJS.experiment.addData('welcome_key.duration', welcome_key.duration);
+        routineTimer.reset();
+        }
+    
+    welcome_key.stop();
+    // the Routine "welcome" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
+
 
 
 var t;
