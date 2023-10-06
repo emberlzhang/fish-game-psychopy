@@ -365,7 +365,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_3',
     text: 'Press LEFT, UP or RIGHT arrows on your keyboard to select your pond.'+
-    '\n\nThe game will start with a quick practice. During the practice, you will see whether you chose the right pond or not. But during the actual game, you will not get this feedback.'_+
+    '\n\nThe game will start with a quick practice. During the practice, you will see whether you chose the right pond or not. But during the actual game, you will not get this feedback.'+
     '\n\nThe game takes approximately 10 minutes to complete.' + 
     '\n\nPress any key to start the practice.',
     font: 'Arial',
