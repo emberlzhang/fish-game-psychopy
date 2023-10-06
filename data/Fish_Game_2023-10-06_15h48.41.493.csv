@@ -1,0 +1,15 @@
+﻿welcome_key.keys,welcome_key.rt,welcome_key.duration,participant,date,expName,psychopyVersion,OS,frameRate,ins1_key.keys,ins1_key.rt,ins1_key.duration,key_resp_2.keys,prac_trials.thisRepN,prac_trials.thisTrialN,prac_trials.thisN,prac_trials.thisIndex,prac_trials.ran,trial,fish1_p,fish2_p,fish3_p,fish4_p,fish5_p,pond_p,pond_p2,pond_p3
+loption,6.3134,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,,,,,,,,,,,,,,
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,,,,,,,,,,,,,,
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,space,232.3452,,,,,,,,,,,,,,,,
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,,,,,,,,,,,,,,
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,,,,,,,,,,,,,,
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,0,0,0,1,1,stimuli/bead_b.PNG,stimuli/blank.jpg,stimuli/blank.jpg,stimuli/blank.jpg,stimuli/blank.jpg,0,1,left
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,1,1,1,1,2,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/blank.jpg,stimuli/blank.jpg,stimuli/blank.jpg,0,1,left
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,2,2,2,1,3,stimuli/bead_g.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/blank.jpg,stimuli/blank.jpg,0,1,left
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,3,3,3,1,4,stimuli/bead_b.PNG,stimuli/bead_g.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/blank.jpg,0,1,left
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,4,4,4,1,5,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/bead_g.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,0,1,left
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,5,5,5,1,6,stimuli/bead_y.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/bead_g.PNG,stimuli/bead_b.PNG,0,1,left
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,6,6,6,1,7,stimuli/bead_b.PNG,stimuli/bead_y.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/bead_g.PNG,0,1,left
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,7,7,7,1,8,stimuli/bead_y.PNG,stimuli/bead_b.PNG,stimuli/bead_y.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,1,2,up
+,,,,2023-10-06_15h48.41.493,Fish_Game,2023.1.3,MacIntel,60.0024001,,,,,0,8,8,8,1,9,stimuli/bead_y.PNG,stimuli/bead_y.PNG,stimuli/bead_b.PNG,stimuli/bead_y.PNG,stimuli/bead_b.PNG,1,2,up
