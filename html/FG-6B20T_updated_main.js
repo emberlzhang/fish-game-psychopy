@@ -320,7 +320,7 @@ async function experimentInit() {
     name: 'text_1b',
     text: 'Each day, the boy catches 15 fish. He will show you the fish he catches one by one, shown in the black square.' +
     '\nEach turn, you will guess from which pond he is fishing.' +
-    '\n\nThe boy will pick a different pond at the beginning of a new day, and he may or may not change ponds within the same day.' + 
+    '\nThe boy will pick a different pond at the beginning of a new day, and he may or may not change ponds within the same day.' + 
     '\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
@@ -336,12 +336,12 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_2',
     text: 'A correct guess is rewarded with $1, while an incorrect guess earns $0.' +
-    ' At the end of the game, you will receive the total bonus from one randomly selected session.' + 
-    ' The maximum bonus you can receive from this game is $15, if you guess correctly for all trials.' +
+    '\n\nAt the end of the game, you will receive the total bonus from one randomly selected session.' + 
+    '\n\nThe maximum bonus you can receive from this game is $15, if you guess correctly for all trials.' +
     '\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, (- 0.2)], height: 0.03,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, (- 0.2)], height: 0.035,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color([(- 1.0), (- 1.0), (- 1.0)]),  opacity: undefined,
     depth: 0.0 
