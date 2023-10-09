@@ -56,12 +56,15 @@ psychoJS.scheduleCondition(function() { return (psychoJS.gui.dialogComponent.but
 // flowScheduler gets run if the participants presses OK
 flowScheduler.add(updateInfo); // add timeStamp
 flowScheduler.add(experimentInit);
+// first page
 flowScheduler.add(welcomeRoutineBegin());
 flowScheduler.add(welcomeRoutineEachFrame());
 flowScheduler.add(welcomeRoutineEnd());
+// instruction video
 flowScheduler.add(instruct_videoRoutineBegin());
 flowScheduler.add(instruct_videoRoutineEachFrame());
 flowScheduler.add(instruct_videoRoutineEnd());
+// written instructions
 flowScheduler.add(ins1RoutineBegin());
 flowScheduler.add(ins1RoutineEachFrame());
 flowScheduler.add(ins1RoutineEnd());
@@ -71,30 +74,21 @@ flowScheduler.add(ins2RoutineEnd());
 flowScheduler.add(ins3RoutineBegin());
 flowScheduler.add(ins3RoutineEachFrame());
 flowScheduler.add(ins3RoutineEnd());
-//start new stuff
+// practice blocks
 const prac_blockLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(prac_blockLoopBegin(prac_blockLoopScheduler));
 flowScheduler.add(prac_blockLoopScheduler);
 flowScheduler.add(prac_blockLoopEnd);
-// flowScheduler.add(prac_resetRoutineBegin());
-// flowScheduler.add(prac_resetRoutineEachFrame());
-// flowScheduler.add(prac_resetRoutineEnd());
-//end new stuff
-
-// const prac_trialsLoopScheduler = new Scheduler(psychoJS);
-// flowScheduler.add(prac_trialsLoopBegin(prac_trialsLoopScheduler));
-// flowScheduler.add(prac_trialsLoopScheduler);
-// flowScheduler.add(prac_trialsLoopEnd);
-// transition text from practice to real trials: You have finished the practice. Now you will begin. 
+// transition from practice to real experiment: You have successfully completed the practice.
 flowScheduler.add(waitRoutineBegin());
 flowScheduler.add(waitRoutineEachFrame());
 flowScheduler.add(waitRoutineEnd());
-// loop of main blocks
+// main blocks
 const blockLoopScheduler = new Scheduler(psychoJS);
 flowScheduler.add(blockLoopBegin(blockLoopScheduler));
 flowScheduler.add(blockLoopScheduler);
 flowScheduler.add(blockLoopEnd);
-// message indicating end of experiment: "Thank you"
+// end of experiment message: "Thank you"
 flowScheduler.add(rewardRoutineBegin());
 flowScheduler.add(rewardRoutineEachFrame());
 flowScheduler.add(rewardRoutineEnd());
@@ -265,7 +259,7 @@ async function experimentInit() {
     text: 'Welcome to the Fishing Game!\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.035,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('black'),  opacity: undefined,
     depth: 0.0 
@@ -689,7 +683,7 @@ async function experimentInit() {
     text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue. ',
     font: 'Arial',
     units: undefined, 
-    pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
+    pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
     languageStyle: 'LTR',
     color: new util.Color('black'),  opacity: undefined,
     depth: 0.0 
@@ -1652,7 +1646,7 @@ function ins3RoutineEnd(snapshot) {
   }
 }
 var pracBlock;
-var practice_on;
+var practice_on; // true/false whether we are in practice block or not
 function prac_blockLoopBegin(prac_blockLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
