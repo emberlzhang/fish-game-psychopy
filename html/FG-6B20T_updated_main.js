@@ -256,7 +256,7 @@ async function experimentInit() {
   text_welcome = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_welcome',
-    text: 'Welcome to the Fishing Game!\n\nPress any key to continue.',
+    text: 'Welcome to the "Which Pond?" Game!\n\nPress any key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -289,7 +289,7 @@ async function experimentInit() {
   text_1a = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_1a',
-    text: 'The Fishing Game\n\nImagine a boy that goes fishing for 10 days. There are three ponds, each containing fish of different colors: blue, yellow, and green. In each pond the majority of the fish are of a single color.',
+    text: 'The "Which Pond?" Fishing Game\n\nImagine a boy that goes fishing for 10 days. There are three ponds, each containing fish of different colors: blue, yellow, and green. In each pond the majority of the fish are of a single color.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.35], height: 0.035,  wrapWidth: undefined, ori: 0.0,
