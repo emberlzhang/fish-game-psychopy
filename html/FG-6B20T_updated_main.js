@@ -256,7 +256,7 @@ async function experimentInit() {
   text_welcome = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_welcome',
-    text: "Welcome to the Which Pond? Game\n\nPress any key to continue.",
+    text: "Welcome to the Which Pond? Game\n\n\nYou will begin by watching an instruction video. \n\nPress any key to continue.",
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
@@ -680,7 +680,8 @@ async function experimentInit() {
   Begin_txt = new visual.TextStim({
     win: psychoJS.window,
     name: 'Begin_txt',
-    text: 'You have successfully completed the practice.\n\nNow you are ready to start the game.\n\nPress SPACE key to continue. ',
+    text: 'You have successfully completed the practice. Now you are ready to start the game.' +
+    '\n\nPress LEFT, UP, or RIGHT arrows on your keyboard to select your pond. \n\nPress SPACE key to continue.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
