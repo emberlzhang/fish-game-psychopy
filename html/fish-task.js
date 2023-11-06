@@ -1659,6 +1659,26 @@ function ins3RoutineEachFrame() {
   };
 }
 
+function ins3RoutineEnd(snapshot) {
+  return async function () {
+    //--- Ending Routine 'ins3' ---
+    for (const thisComponent of ins3Components) {
+      if (typeof thisComponent.setAutoDraw === 'function') {
+        thisComponent.setAutoDraw(false);
+      }
+    }
+    ins3_key.stop();
+    // the Routine "ins3" was not non-slip safe, so reset the non-slip timer
+    routineTimer.reset();
+    
+    // Routines running outside a loop should always advance the datafile row
+    if (currentLoop === psychoJS.experiment) {
+      psychoJS.experiment.nextEntry(snapshot);
+    }
+    return Scheduler.Event.NEXT;
+  }
+}
+
 var _ins4_key_allKeys;
 var ins4Components;
 function ins4RoutineBegin(snapshot) {
