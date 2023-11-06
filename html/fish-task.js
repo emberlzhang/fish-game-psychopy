@@ -264,7 +264,7 @@ async function experimentInit() {
   text_welcome = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_welcome',
-    text: "Welcome to the Which Pond? Game\n\n\nYou will begin by watching an instruction video. \n\nPress any key to continue.",
+    text: "Welcome to the Which Pond? Game\n\nPress any key to continue.",
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.05,  wrapWidth: undefined, ori: 0.0,
