@@ -12,7 +12,7 @@ const { round } = util;
 
 
 // store info about the experiment session:
-let expName = 'Fish_Game';  // from the Builder filename that created this script
+let expName = 'Fish Game';  // from the Builder filename that created this script
 let expInfo = {
     'participant': '',
 };
