@@ -74,6 +74,7 @@ flowScheduler.add(ins3RoutineEnd());
 flowScheduler.add(instruct_videoRoutineBegin());
 flowScheduler.add(instruct_videoRoutineEachFrame());
 flowScheduler.add(instruct_videoRoutineEnd());
+// transition text
 flowScheduler.add(ins4RoutineBegin());
 flowScheduler.add(ins4RoutineEachFrame());
 flowScheduler.add(ins4RoutineEnd());
@@ -394,8 +395,7 @@ async function experimentInit() {
   text_4 = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_4',
-    text: 'Press LEFT, UP or RIGHT arrows on your keyboard to select your pond.'+
-    '\n\nThe game takes approximately 10 minutes to complete.' + 
+    text: 'Press LEFT, UP or RIGHT arrows on your keyboard to select your pond. The game takes approximately 10 minutes to complete.' + 
     '\n\nThe game will start with a quick practice. During the practice, you will see whether you chose the right pond or not. But during the actual game, you will not get this feedback.'+
     '\n\nPress any key to start the practice.',
     font: 'Arial',
@@ -1721,7 +1721,7 @@ function ins4RoutineEachFrame() {
     // update/draw components on each frame
     
     // *text_3* updates
-    if (t >= 0.0 && text_3.status === PsychoJS.Status.NOT_STARTED) {
+    if (t >= 0.0 && text_4.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
       text_4.tStart = t;  // (not accounting for frame time here)
       text_4.frameNStart = frameN;  // exact frame index
