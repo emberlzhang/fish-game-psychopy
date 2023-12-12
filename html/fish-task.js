@@ -1159,10 +1159,10 @@ function welcomeRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(welcome_key.corr, level);
     }
-    psychoJS.experiment.addData('welcome_key.keys', welcome_key.keys);
+    psychoJS.experiment.addData('welcome_key_keys', welcome_key.keys);
     if (typeof welcome_key.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('welcome_key.rt', welcome_key.rt);
-        psychoJS.experiment.addData('welcome_key.duration', welcome_key.duration);
+        psychoJS.experiment.addData('welcome_key_rt', welcome_key.rt);
+        psychoJS.experiment.addData('welcome_key_duration', welcome_key.duration);
         routineTimer.reset();
         }
     
@@ -1407,10 +1407,10 @@ function ins1RoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(ins1_key.corr, level);
     }
-    psychoJS.experiment.addData('ins1_key.keys', ins1_key.keys);
+    psychoJS.experiment.addData('ins1_key_keys', ins1_key.keys);
     if (typeof ins1_key.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('ins1_key.rt', ins1_key.rt);
-        psychoJS.experiment.addData('ins1_key.duration', ins1_key.duration);
+        psychoJS.experiment.addData('ins1_key_rt', ins1_key.rt);
+        psychoJS.experiment.addData('ins1_key_duration', ins1_key.duration);
         routineTimer.reset();
         }
     
@@ -2113,10 +2113,13 @@ function option_practiceRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from code_2
+    psychoJS.experiment.addData("practice_trial_started", globalClock.getTime());
     fish_int = fish_interval[(Math.floor(Math.random() * fish_interval.length))];
     endMsg = " ";
     endTrial = false;
     
+    psychoJS.experiment.addData("practice_trial_num", prac_trials.thisN);
+
     F1_2.setImage(fish1_p);
     F2_2.setImage(fish2_p);
     F3_2.setImage(fish3_p);
@@ -2347,10 +2350,10 @@ function option_practiceRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(key_resp_2.corr, level);
     }
-    psychoJS.experiment.addData('key_resp_2.keys', key_resp_2.keys);
+    psychoJS.experiment.addData('prac_key_resp_keys', key_resp_2.keys);
     if (typeof key_resp_2.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('key_resp_2.rt', key_resp_2.rt);
-        psychoJS.experiment.addData('key_resp_2.duration', key_resp_2.duration);
+        psychoJS.experiment.addData('prac_key_resp_rt', key_resp_2.rt);
+        psychoJS.experiment.addData('prac_key_resp_duration', key_resp_2.duration);
         routineTimer.reset();
         }
     
@@ -2402,10 +2405,10 @@ function response_practiceRoutineBegin(snapshot) {
         }
         if (((key_resp_2.keys === pond_p2.toString()) || (key_resp_2.keys === pond_p3))) {
             var practice_msg = "Correct!";
-            psychoJS.experiment.addData("fish_key_2.corr", 1);
+            psychoJS.experiment.addData("prac_resp_corr", 1);
         } else {
             var practice_msg = "Oops! Wrong pond.";
-            psychoJS.experiment.addData("fish_key_2.corr", 0);
+            psychoJS.experiment.addData("prac_resp_corr", 0);
         }
     }
     
@@ -2789,10 +2792,10 @@ function waitRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(ExpStart_key.corr, level);
     }
-    psychoJS.experiment.addData('ExpStart_key.keys', ExpStart_key.keys);
+    psychoJS.experiment.addData('ExpStart_key_keys', ExpStart_key.keys);
     if (typeof ExpStart_key.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('ExpStart_key.rt', ExpStart_key.rt);
-        psychoJS.experiment.addData('ExpStart_key.duration', ExpStart_key.duration);
+        psychoJS.experiment.addData('ExpStart_key_rt', ExpStart_key.rt);
+        psychoJS.experiment.addData('ExpStart_key_duration', ExpStart_key.duration);
         routineTimer.reset();
         }
     
@@ -2906,9 +2909,12 @@ function option_fishRoutineBegin(snapshot) {
     continueRoutine = true; // until we're told otherwise
     // update component parameters for each repeat
     // Run 'Begin Routine' code from mainCode
+    psychoJS.experiment.addData("main_trial_started", globalClock.getTime());
     fish_int = fish_interval[(Math.floor(Math.random() * fish_interval.length))];
     endMsg = " ";
     endTrial = false;
+
+    psychoJS.experiment.addData("main_trial_num", trials.thisN);
     
     F1.setImage(fish1);
     F2.setImage(fish2);
@@ -2916,7 +2922,7 @@ function option_fishRoutineBegin(snapshot) {
     F4.setImage(fish4);
     F5.setImage(fish5);
     fish_key_button.keys = undefined;
-    fish_key_button.rt = undefined;
+    fish_key_button_rt = undefined;
     _fish_key_button_allKeys = [];
     // keep track of which components have finished
     option_fishComponents = [];
@@ -3139,10 +3145,10 @@ function option_fishRoutineEnd(snapshot) {
     if (currentLoop instanceof MultiStairHandler) {
       currentLoop.addResponse(fish_key_button.corr, level);
     }
-    psychoJS.experiment.addData('fish_key_button.keys', fish_key_button.keys);
+    psychoJS.experiment.addData('trial_resp_keys', fish_key_button.keys);
     if (typeof fish_key_button.keys !== 'undefined') {  // we had a response
-        psychoJS.experiment.addData('fish_key_button.rt', fish_key_button.rt);
-        psychoJS.experiment.addData('fish_key_button.duration', fish_key_button.duration);
+        psychoJS.experiment.addData('trial_resp_rt', fish_key_button.rt);
+        psychoJS.experiment.addData('trial_resp_duration', fish_key_button.duration);
         routineTimer.reset();
         }
     
@@ -3198,9 +3204,9 @@ function response_fishRoutineBegin(snapshot) {
         }
         if (((fish_key_button.keys === pond2.toString()) || (fish_key_button.keys === pond3))) {
             nCorr += 1;
-            psychoJS.experiment.addData("fish_key.corr", 1);
+            psychoJS.experiment.addData("main_resp_corr", 1);
         } else {
-            psychoJS.experiment.addData("fish_key.corr", 0);
+            psychoJS.experiment.addData("main_resp_corr", 0);
         }
     }
     
@@ -3657,8 +3663,8 @@ function importConditions(currentLoop) {
 }
 
 
-var final_pay;
-var blockID;
+var reward_score;
+var reward_amt;
 async function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
   if (psychoJS.experiment.isEntryEmpty()) {
@@ -3667,24 +3673,14 @@ async function quitPsychoJS(message, isCompleted) {
   
   
   
-  
-  
-  
-  
   // Run 'End Experiment' code from reward_pay
-  final_pay = util.randchoice(util.range(block_correct.length));
-  blockID = (final_pay + 1);
-  psychoJS.experiment.addData("reward_block_chosen", blockID);
+  reward_score = util.randchoice(util.range(block_correct.length));
+  reward_amt = (reward_score + 1);
+  psychoJS.experiment.addData("reward_amount", reward_amt);
   
-  
-  
-  
-  
-  
-  
-  
-  
-  
+  // Save end task time
+  end_task_time = util.MonotonicClock.getDateStr();
+  psychoJS.experiment.addData("date_end_task", end_task_time);
   
   
   psychoJS.window.close();
