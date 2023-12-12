@@ -1,0 +1,11 @@
+﻿welcome_key.keys,welcome_key.rt,welcome_key.duration,participant,date,expName,psychopyVersion,OS,frameRate,ins1_key.keys,ins1_key.rt,ins1_key.duration,key_resp_2.keys,key_resp_2.rt,key_resp_2.duration,fish_key_2.corr,prac_trials.thisRepN,prac_trials.thisTrialN,prac_trials.thisN,prac_trials.thisIndex,prac_trials.ran,trial,fish1_p,fish2_p,fish3_p,fish4_p,fish5_p,pond_p,pond_p2,pond_p3
+space,0.9638,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,,,
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,space,0.6237,,,,,,,,,,,,,,,,,,,
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,,,
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,,,
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,,,
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,,,,,,,,,,,,,,,,,,
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,up,0.8461,,0,0,0,0,0,1,1,stimuli/bead_b.PNG,stimuli/blank.jpg,stimuli/blank.jpg,stimuli/blank.jpg,stimuli/blank.jpg,0,1,left
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,left,0.0009,,1,0,1,1,1,1,2,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/blank.jpg,stimuli/blank.jpg,stimuli/blank.jpg,0,1,left
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,left,0.1742,,1,0,2,2,2,1,3,stimuli/bead_g.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/blank.jpg,stimuli/blank.jpg,0,1,left
+,,,,2023-11-06_17h42.51.606,Fish Game,2023.1.3,MacIntel,60.06006006,,,,right,0.0723,,0,0,3,3,3,1,4,stimuli/bead_b.PNG,stimuli/bead_g.PNG,stimuli/bead_b.PNG,stimuli/bead_b.PNG,stimuli/blank.jpg,0,1,left
