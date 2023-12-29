@@ -14,9 +14,9 @@ import { $nd } from './nemo_data.js';
 
 // store info about the experiment session:
 let expName = 'Fish Game';  // from the Builder filename that created this script
-let expInfo = {
-  'participant': ''
-};
+// let expInfo = {
+//   'participant': ''
+// };
 
 //////////////////////////////////////////////
 
@@ -69,7 +69,7 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
 url_params = "?" + study_id + "?prolific_id=" + subject_data.prolific_id + "?study_id=" + subject_data.study_id + "?session_id=" + subject_data.session_id
 
 if (redirect_to == "slot task")
-  redirect_url = "run.pavlovia.com/janetchang/slot-task" + url_params;
+  redirect_url = "run.pavlovia.com/janetchang/slot-machine" + url_params;
 else // redirect = "study complete"
   if (subject_data.prolific_id == '') // this is an invited subject
     redirect_url = "http://redcap.com" + redcap_completioncode + url_params; 
