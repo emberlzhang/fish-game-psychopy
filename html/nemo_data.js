@@ -307,7 +307,7 @@ $nu.send_instance = function ( _nemodata, _f )	// f optional callback function
 // --
 // -- requires nemo util library ( $nu )
 // --
-const $nd = 
+export const $nd = 
 {
     version : '1.1',
 
