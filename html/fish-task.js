@@ -9,14 +9,76 @@ const { Scheduler } = util;
 //some handy aliases as in the psychopy scripts;
 const { abs, sin, cos, PI: pi, sqrt } = Math;
 const { round } = util;
+import { $nd } from './nemo_data.js';
 
 
 // store info about the experiment session:
 let expName = 'Fish Game';  // from the Builder filename that created this script
 let expInfo = {
-    'participant': '',
+  'participant': ''
 };
 
+//////////////////////////////////////////////
+
+let expInfo = {
+  'study_id': '',
+  'prolific_id': '',
+  'session_id': ''
+  // 'participant': ''
+};
+
+// set up data handler using nemo_data object, $nd
+$nd.name = 'fish-task';
+$nd.description = 'fish task';
+$nd.start_game()
+$nd.add_metadata('subject_data', subject_data);
+
+// get the url params
+$nd.init();
+subject_data.prolific_id = $nd.query_params.prolific_id || $nd.query_params.PROLIFIC_PID;
+subject_data.study_id    = $nd.query_params.study_id || $nd.query_params.STUDY_ID;
+subject_data.session_id  = $nd.query_params.session_id || $nd.query_params.SESSION_ID;
+$nd.subjectid            = subject_data.prolific_id;
+
+if (path_id == "A")
+  // fish task is first task, need to redirect to slot task
+  redirect_to = "slot task";
+else // path_id == "B"
+  // fish task is last task, need to redirect to study completion page
+  redirect_to = "study complete"; 
+
+switch(subject_data.study_id) { // study_id determines which study it goes to 
+  case "1A": study_group = "nicotine_grp_online";
+    break;
+  case "1B": study_group = "nicotine_ctrl_online";
+    break;
+  case "1C": study_group = "nicotine_grp_invited";
+    break;
+  case "1D": study_group = "nicotine_ctrl_invited";
+    break; 
+  case "2A": study_group = "eatingdisorder_grp_online";
+    break;
+  case "2B": study_group = "eatingdisorder_ctrl_online";
+    break;
+  case "2A": study_group = "eatingdisorder_grp_invited";
+    break;
+  case "2B": study_group = "eatingdisorder_ctrl_invited";
+    break;
+}
+
+url_params = "?" + study_id + "?prolific_id=" + subject_data.prolific_id + "?study_id=" + subject_data.study_id + "?session_id=" + subject_data.session_id
+
+if (redirect_to == "slot task")
+  redirect_url = "run.pavlovia.com/janetchang/slot-task" + url_params;
+else // redirect = "study complete"
+  if (subject_data.prolific_id == '') // this is an invited subject
+    redirect_url = "http://redcap.com" + redcap_completioncode + url_params; 
+  else // this is a prolific subject
+    redirect_url = "https://app.prolific.com/submissions/complete?cc=C19HH1X3" + url_params;
+
+console.log("redirect_url: " + redirect_url)
+
+//////////////////////////////////////////////
 
 // Start code blocks for 'Before Experiment'
 // Run 'Before Experiment' code from mainCode
@@ -3672,7 +3734,6 @@ async function quitPsychoJS(message, isCompleted) {
   }
   
   
-  
   // Run 'End Experiment' code from reward_pay
   reward_score = util.randchoice(util.range(block_correct.length));
   reward_amt = (reward_score + 1);
@@ -3685,6 +3746,10 @@ async function quitPsychoJS(message, isCompleted) {
   
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
+  
+  // redirect to the new URL after finished
+  // figure out which line to insert this exactly
+  window.location.replace(redirect_url)
   
   return Scheduler.Event.QUIT;
 }
