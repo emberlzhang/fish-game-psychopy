@@ -73,6 +73,7 @@ console.log(subject_data)
 // subject_data.session_id  = $nd.query_params.session_id || $nd.query_params.SESSION_ID;
 // $nd.subjectid            = subject_data.prolific_id;
 var study_group;
+var redcap_completionsurvey;
 switch(subject_data.study_id) { // study_id determines which study it goes to 
   case "1A": study_group = "nicotine_grp_online";
     break;
@@ -95,7 +96,7 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
 var redirect_url;
 if (subject_data.path_id.toUpperCase() == "A") {
   // redirect to slot task
-  redirect_url = "run.pavlovia.com/janetlchang/slot-machine" +  "?" + url_params;
+  redirect_url = "http://run.pavlovia.com/janetlchang/slot-machine" +  "?" + url_params;
 } else if (subject_data.path_id.toUpperCase() == "B") {
   // fish task is last task, need to redirect to study completion page
     if (study_group.includes("invited") || subject_data.prolific_id == '') {
