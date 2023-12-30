@@ -9,8 +9,9 @@ const { Scheduler } = util;
 //some handy aliases as in the psychopy scripts;
 const { abs, sin, cos, PI: pi, sqrt } = Math;
 const { round } = util;
-import { $nd } from './nemo_data.js';
+// import { $nd } from './nemo_data.js';
 
+////////////////////////////////////////////////////////////////////////////////////////////
 
 // store info about the experiment session:
 let expName = 'Fish Game';  // from the Builder filename that created this script
@@ -18,7 +19,7 @@ let expName = 'Fish Game';  // from the Builder filename that created this scrip
 //   'participant': ''
 // };
 
-//////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////
 
 let expInfo = {
   'study_id': '',
@@ -27,18 +28,24 @@ let expInfo = {
   // 'participant': ''
 };
 
-// set up data handler using nemo_data object, $nd
-$nd.name = 'fish-task';
-$nd.description = 'fish task';
-$nd.start_game()
-$nd.add_metadata('subject_data', subject_data);
 
-// get the url params
-$nd.init();
-subject_data.prolific_id = $nd.query_params.prolific_id || $nd.query_params.PROLIFIC_PID;
-subject_data.study_id    = $nd.query_params.study_id || $nd.query_params.STUDY_ID;
-subject_data.session_id  = $nd.query_params.session_id || $nd.query_params.SESSION_ID;
-$nd.subjectid            = subject_data.prolific_id;
+var subject_data = {};
+
+// https://run.pavlovia.org/janetlchang/fish-task/html/?prolific_id=pid1?study_id=si1?session_id=sid1
+var url_params = window.location.search;
+console.log(url_params);
+// set up data handler using nemo_data object, $nd
+// $nd.name = 'fish-task';
+// $nd.description = 'fish task';
+// $nd.start_game()
+// $nd.add_metadata('subject_data', subject_data);
+
+// // get the url params
+// $nd.init();
+// subject_data.prolific_id = $nd.query_params.prolific_id || $nd.query_params.PROLIFIC_PID;
+// subject_data.study_id    = $nd.query_params.study_id || $nd.query_params.STUDY_ID;
+// subject_data.session_id  = $nd.query_params.session_id || $nd.query_params.SESSION_ID;
+// $nd.subjectid            = subject_data.prolific_id;
 
 if (path_id == "A")
   // fish task is first task, need to redirect to slot task
@@ -66,10 +73,10 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
     break;
 }
 
-url_params = "?" + study_id + "?prolific_id=" + subject_data.prolific_id + "?study_id=" + subject_data.study_id + "?session_id=" + subject_data.session_id
+// url_params = "?" + study_id + "?prolific_id=" + subject_data.prolific_id + "?study_id=" + subject_data.study_id + "?session_id=" + subject_data.session_id
 
 if (redirect_to == "slot task")
-  redirect_url = "run.pavlovia.com/janetchang/slot-machine" + url_params;
+  redirect_url = "run.pavlovia.com/janetlchang/slot-machine" + url_params;
 else // redirect = "study complete"
   if (subject_data.prolific_id == '') // this is an invited subject
     redirect_url = "http://redcap.com" + redcap_completioncode + url_params; 
