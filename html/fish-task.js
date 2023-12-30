@@ -28,17 +28,15 @@ let expInfo = {
   // 'participant': ''
 };
 
-
 var subject_data = {};
 
 // Capture URL parameters and set study values
 var url_params = window.location.search.slice(1); // slice remove first char to get rid of beginning "?"
 // example of url_params: "prolific_id=pid1&study_id=si1&session_id=sid1&path_id=path"
-
-console.log(url_params);
-
 var indiv_params = url_params.split("&")
+console.log(url_params);
 console.log(indiv_params)
+
 var param;
 var par_vals;
 for (let i = 0; i < indiv_params.length; i++) {
@@ -74,7 +72,7 @@ console.log(subject_data)
 // subject_data.study_id    = $nd.query_params.study_id || $nd.query_params.STUDY_ID;
 // subject_data.session_id  = $nd.query_params.session_id || $nd.query_params.SESSION_ID;
 // $nd.subjectid            = subject_data.prolific_id;
-
+var study_group;
 switch(subject_data.study_id) { // study_id determines which study it goes to 
   case "1A": study_group = "nicotine_grp_online";
     break;
@@ -100,11 +98,11 @@ if (subject_data.path_id.toUpperCase() == "A") {
   redirect_url = "run.pavlovia.com/janetlchang/slot-machine" +  "?" + url_params;
 } else if (subject_data.path_id.toUpperCase() == "B") {
   // fish task is last task, need to redirect to study completion page
-  if (subject_data.prolific_id == '') {
-    // redirect for invited subject
-    redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
-  } else // redirect for prolific subject
-    redirect_url = "https://app.prolific.com/submissions/complete?cc=C19HH1X3" + "&" + url_params;
+    if (study_group.includes("invited") || subject_data.prolific_id == '') {
+      // redirect for invited subject
+      redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
+    } else // redirect for prolific subject
+      redirect_url = "https://app.prolific.com/submissions/complete?cc=C19HH1X3" + "&" + url_params;
 }
 
 console.log("redirect_url: " + redirect_url)
