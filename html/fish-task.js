@@ -94,6 +94,7 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
     break;
 }
 
+var redirect_url;
 if (subject_data.path_id.toUpperCase() == "A") {
   // redirect to slot task
   redirect_url = "run.pavlovia.com/janetlchang/slot-machine" +  "?" + url_params;
