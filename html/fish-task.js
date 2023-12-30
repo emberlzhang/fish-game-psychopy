@@ -31,9 +31,36 @@ let expInfo = {
 
 var subject_data = {};
 
-// https://run.pavlovia.org/janetlchang/fish-task/html/?prolific_id=pid1?study_id=si1?session_id=sid1
-var url_params = window.location.search;
+// Capture URL parameters and set study values
+var url_params = window.location.searc.slice(1); // slice remove first char to get rid of beginning "?"
+// example of url_params: "prolific_id=pid1&study_id=si1&session_id=sid1&path_id=path"
+
 console.log(url_params);
+
+var indiv_params = url_params.split("&")
+console.log(indiv_params)
+for (let i = 0; i < indiv_params.length; i++) {
+  param = indiv_params[i]
+  par_vals = param.split("=");
+  par_val = par_vals[1];
+  if (param.toLowerCase().includes("prolific_id")) {
+    console.log("pid found")
+    subject_data.prolific_id = par_vals[1];
+  } else if (param.toLowerCase().includes("study_id")) {
+    console.log("study id found")
+    subject_data.study_id = par_vals[1];
+  } else if (param.toLowerCase().includes("session_id")) {
+    console.log("sid found")
+    subject_data.session_id = par_vals[1];
+  } else if (param.toLowerCase().includes("path_id")) {
+    console.log("path found")
+    subject_data.path_id = par_vals[1];
+  }
+};
+
+console.log("Subject data should be collected now: ")
+console.log(subject_data)
+
 // set up data handler using nemo_data object, $nd
 // $nd.name = 'fish-task';
 // $nd.description = 'fish task';
@@ -47,41 +74,36 @@ console.log(url_params);
 // subject_data.session_id  = $nd.query_params.session_id || $nd.query_params.SESSION_ID;
 // $nd.subjectid            = subject_data.prolific_id;
 
-if (path_id == "A")
-  // fish task is first task, need to redirect to slot task
-  redirect_to = "slot task";
-else // path_id == "B"
-  // fish task is last task, need to redirect to study completion page
-  redirect_to = "study complete"; 
-
 switch(subject_data.study_id) { // study_id determines which study it goes to 
   case "1A": study_group = "nicotine_grp_online";
     break;
   case "1B": study_group = "nicotine_ctrl_online";
     break;
-  case "1C": study_group = "nicotine_grp_invited";
+  case "1C": study_group = "nicotine_grp_invited"; redcap_completionsurvey = "?s=nicotine_cc";
     break;
-  case "1D": study_group = "nicotine_ctrl_invited";
+  case "1D": study_group = "nicotine_ctrl_invited"; redcap_completionsurvey = "?s=nicotine_ctrl_cc";
     break; 
   case "2A": study_group = "eatingdisorder_grp_online";
     break;
   case "2B": study_group = "eatingdisorder_ctrl_online";
     break;
-  case "2A": study_group = "eatingdisorder_grp_invited";
+  case "2A": study_group = "eatingdisorder_grp_invited"; redcap_completionsurvey = "?s=eatingdisorder_cc";
     break;
-  case "2B": study_group = "eatingdisorder_ctrl_invited";
+  case "2B": study_group = "eatingdisorder_ctrl_invited"; redcap_completionsurvey = "?s=eatingdisorder_ctrl_cc";
     break;
 }
 
-// url_params = "?" + study_id + "?prolific_id=" + subject_data.prolific_id + "?study_id=" + subject_data.study_id + "?session_id=" + subject_data.session_id
-
-if (redirect_to == "slot task")
-  redirect_url = "run.pavlovia.com/janetlchang/slot-machine" + url_params;
-else // redirect = "study complete"
-  if (subject_data.prolific_id == '') // this is an invited subject
-    redirect_url = "http://redcap.com" + redcap_completioncode + url_params; 
-  else // this is a prolific subject
-    redirect_url = "https://app.prolific.com/submissions/complete?cc=C19HH1X3" + url_params;
+if (subject_data.path_id.toUpperCase() == "A") {
+  // redirect to slot task
+  redirect_url = "run.pavlovia.com/janetlchang/slot-machine" +  "?" + url_params;
+} else if (subject_data.path_id.toUpperCase() == "B") {
+  // fish task is last task, need to redirect to study completion page
+  if (subject_data.prolific_id == '') {
+    // redirect for invited subject
+    redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
+  } else // redirect for prolific subject
+    redirect_url = "https://app.prolific.com/submissions/complete?cc=C19HH1X3" + "&" + url_params;
+}
 
 console.log("redirect_url: " + redirect_url)
 
@@ -219,7 +241,6 @@ async function updateInfo() {
   expInfo['expName'] = expName;
   expInfo['psychopyVersion'] = '2023.1.3';
   expInfo['OS'] = window.navigator.platform;
-
 
   // store frame rate of monitor if we can measure it successfully
   expInfo['frameRate'] = psychoJS.window.getActualFrameRate();
