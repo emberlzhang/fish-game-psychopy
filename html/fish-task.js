@@ -39,10 +39,11 @@ console.log(url_params);
 
 var indiv_params = url_params.split("&")
 console.log(indiv_params)
+var param;
+var par_vals;
 for (let i = 0; i < indiv_params.length; i++) {
-  param = indiv_params[i]
-  par_vals = param.split("=");
-  par_val = par_vals[1];
+  var param = indiv_params[i]
+  var par_vals = param.split("=");
   if (param.toLowerCase().includes("prolific_id")) {
     console.log("pid found")
     subject_data.prolific_id = par_vals[1];
