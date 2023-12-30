@@ -32,7 +32,7 @@ let expInfo = {
 var subject_data = {};
 
 // Capture URL parameters and set study values
-var url_params = window.location.searc.slice(1); // slice remove first char to get rid of beginning "?"
+var url_params = window.location.search.slice(1); // slice remove first char to get rid of beginning "?"
 // example of url_params: "prolific_id=pid1&study_id=si1&session_id=sid1&path_id=path"
 
 console.log(url_params);
