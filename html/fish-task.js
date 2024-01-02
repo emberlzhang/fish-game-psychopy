@@ -83,7 +83,7 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
 
 if (subject_data.path_id.toUpperCase() == "A") {
   // redirect to slot task
-  redirect_url = "http://run.pavlovia.com/janetlchang/slot-machine" +  "?" + url_params;
+  redirect_url = "http://run.pavlovia.org/janetlchang/slot-machine" +  "?" + url_params;
 } else if (subject_data.path_id.toUpperCase() == "B") {
   // fish task is last task, need to redirect to study completion page
     if (study_group.includes("invited") || subject_data.prolific_id == '') {
@@ -2046,7 +2046,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     block = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+      nReps: 0, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
       trialList: assigned_block_order,
       seed: undefined, name: 'block'
@@ -3760,7 +3760,6 @@ async function quitPsychoJS(message, isCompleted) {
   // Save end task time
   end_task_time = util.MonotonicClock.getDateStr();
   psychoJS.experiment.addData("date_end_task", end_task_time);
-  
   
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
