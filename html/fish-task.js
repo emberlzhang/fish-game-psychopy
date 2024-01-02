@@ -15,17 +15,15 @@ const { round } = util;
 
 // store info about the experiment session:
 let expName = 'Fish Game';  // from the Builder filename that created this script
-// let expInfo = {
-//   'participant': ''
-// };
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-let expInfo = {
+let expInfo = { // these show up as fields on starting page if URL params are not present
   'study_id': '',
-  'prolific_id': '',
-  'session_id': ''
-  // 'participant': ''
+  'path_id': ''
+  // 'prolific_id': '',
+  // 'subject_id': ''
+  // 'session_id': ''
 };
 
 var subject_data = {};
@@ -42,7 +40,7 @@ var par_vals;
 for (let i = 0; i < indiv_params.length; i++) {
   var param = indiv_params[i]
   var par_vals = param.split("=");
-  if (param.toLowerCase().includes("prolific_id")) {
+  if (param.toLowerCase().includes("prolific_id")) { // only for prolific participants
     console.log("pid found")
     subject_data.prolific_id = par_vals[1];
   } else if (param.toLowerCase().includes("study_id")) {
@@ -54,7 +52,9 @@ for (let i = 0; i < indiv_params.length; i++) {
   } else if (param.toLowerCase().includes("path_id")) {
     console.log("path found")
     subject_data.path_id = par_vals[1];
-  }
+  } else if (param.toLowerCase().includes("subject_id")) { // only for invited subjects
+    console.log("subj id found")
+    subject_data.subject_id = par_vals[1];
 };
 
 console.log("Subject data should be collected now: ")
