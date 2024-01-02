@@ -2976,6 +2976,7 @@ function reward_resetRoutineEnd(snapshot) {
 
 var _fish_key_button_allKeys;
 var option_fishComponents;
+var fish_key_button_rt;
 function option_fishRoutineBegin(snapshot) {
   return async function () {
     TrialHandler.fromSnapshot(snapshot); // ensure that .thisN vals are up to date
