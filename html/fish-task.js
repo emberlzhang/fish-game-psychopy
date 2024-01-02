@@ -16,6 +16,8 @@ const { round } = util;
 // store info about the experiment session:
 let expName = 'Fish Game';  // from the Builder filename that created this script
 
+var debug_mode = false; // toggle true to skip real trials in experiment
+
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
   'study_id': '',
@@ -2039,6 +2041,13 @@ console.log("random index: " + randomIndex)
 var assigned_block_order = block_order_options[randomIndex];
 console.log("assigned block order: " + assigned_block_order)
 
+var n_blocks;
+if (debug_mode == true){
+  n_blocks = 0;
+} else {
+  n_blocks = 1;
+}
+
 function blockLoopBegin(blockLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -2046,7 +2055,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     block = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 0, method: TrialHandler.Method.SEQUENTIAL,
+      nReps: n_blocks, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
       trialList: assigned_block_order,
       seed: undefined, name: 'block'
