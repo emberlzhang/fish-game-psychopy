@@ -16,8 +16,7 @@ const { round } = util;
 // store info about the experiment session:
 let expName = 'Fish Game';  // from the Builder filename that created this script
 
-////////////////////////////////////////////////////////////////////////////////////////////
-
+//// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
   'study_id': '',
   'path_id': ''
@@ -27,7 +26,6 @@ let expInfo = { // these show up as fields on starting page if URL params are no
 };
 
 var subject_data = {};
-
 // Capture URL parameters and set study values
 var url_params = window.location.search.slice(1); // slice remove first char to get rid of beginning "?"
 // example of url_params: "prolific_id=pid1&study_id=si1&session_id=sid1&path_id=path"
@@ -37,6 +35,9 @@ console.log(indiv_params)
 
 var param;
 var par_vals;
+var study_group;
+var redcap_completionsurvey;
+var redirect_url;
 for (let i = 0; i < indiv_params.length; i++) {
   var param = indiv_params[i]
   var par_vals = param.split("=");
@@ -55,25 +56,12 @@ for (let i = 0; i < indiv_params.length; i++) {
   } else if (param.toLowerCase().includes("subject_id")) { // only for invited subjects
     console.log("subj id found")
     subject_data.subject_id = par_vals[1];
+  }
 };
 
-console.log("Subject data should be collected now: ")
+console.log("Subject data collected: ")
 console.log(subject_data)
 
-// set up data handler using nemo_data object, $nd
-// $nd.name = 'fish-task';
-// $nd.description = 'fish task';
-// $nd.start_game()
-// $nd.add_metadata('subject_data', subject_data);
-
-// // get the url params
-// $nd.init();
-// subject_data.prolific_id = $nd.query_params.prolific_id || $nd.query_params.PROLIFIC_PID;
-// subject_data.study_id    = $nd.query_params.study_id || $nd.query_params.STUDY_ID;
-// subject_data.session_id  = $nd.query_params.session_id || $nd.query_params.SESSION_ID;
-// $nd.subjectid            = subject_data.prolific_id;
-var study_group;
-var redcap_completionsurvey;
 switch(subject_data.study_id) { // study_id determines which study it goes to 
   case "1A": study_group = "nicotine_grp_online";
     break;
@@ -93,7 +81,6 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
     break;
 }
 
-var redirect_url;
 if (subject_data.path_id.toUpperCase() == "A") {
   // redirect to slot task
   redirect_url = "http://run.pavlovia.com/janetlchang/slot-machine" +  "?" + url_params;
