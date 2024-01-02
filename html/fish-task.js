@@ -3744,6 +3744,7 @@ function importConditions(currentLoop) {
 
 var reward_score;
 var reward_amt;
+var end_task_time; 
 async function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
   if (psychoJS.experiment.isEntryEmpty()) {
