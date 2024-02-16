@@ -47,6 +47,9 @@ for (let i = 0; i < indiv_params.length; i++) {
   } else if (param.toLowerCase().includes("study_id")) {
     console.log("study id found")
     subject_data.study_id = par_vals[1];
+  } else if (param.toLowerCase().includes("group_id")) {
+    console.log("group id found")
+    subject_data.study_id = par_vals[1];
   } else if (param.toLowerCase().includes("session_id")) {
     console.log("sid found")
     subject_data.session_id = par_vals[1];
@@ -62,7 +65,7 @@ for (let i = 0; i < indiv_params.length; i++) {
 console.log("Subject data collected: ")
 console.log(subject_data)
 
-switch(subject_data.study_id) { // study_id determines which study it goes to 
+switch(subject_data.group_id) { // study_id determines which study it goes to 
   case "1A": study_group = "nicotine_grp_online";
     break;
   case "1B": study_group = "nicotine_ctrl_online";
