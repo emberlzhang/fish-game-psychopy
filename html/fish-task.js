@@ -18,7 +18,7 @@ let expName = 'Fish Game';  // from the Builder filename that created this scrip
 
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
-  'study_id': '',
+  'group_id': '',
   'path_id': ''
   // 'prolific_id': '',
   // 'subject_id': ''
@@ -2046,7 +2046,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     block = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 0, method: TrialHandler.Method.SEQUENTIAL,
+      nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
       trialList: assigned_block_order,
       seed: undefined, name: 'block'
