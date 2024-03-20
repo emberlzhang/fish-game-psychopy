@@ -16,9 +16,11 @@ const { round } = util;
 // store info about the experiment session:
 let expName = 'Fish Game';  // from the Builder filename that created this script
 
+var debug_mode = false; // toggle true to skip real trials in experiment
+
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
-  'group_id': '',
+  'study_id': '',
   'path_id': ''
   // 'prolific_id': '',
   // 'subject_id': ''
@@ -47,9 +49,6 @@ for (let i = 0; i < indiv_params.length; i++) {
   } else if (param.toLowerCase().includes("study_id")) {
     console.log("study id found")
     subject_data.study_id = par_vals[1];
-  } else if (param.toLowerCase().includes("group_id")) {
-    console.log("group id found")
-    subject_data.study_id = par_vals[1];
   } else if (param.toLowerCase().includes("session_id")) {
     console.log("sid found")
     subject_data.session_id = par_vals[1];
@@ -65,7 +64,7 @@ for (let i = 0; i < indiv_params.length; i++) {
 console.log("Subject data collected: ")
 console.log(subject_data)
 
-switch(subject_data.group_id) { // study_id determines which study it goes to 
+switch(subject_data.study_id) { // study_id determines which study it goes to 
   case "1A": study_group = "nicotine_grp_online";
     break;
   case "1B": study_group = "nicotine_ctrl_online";
@@ -110,8 +109,7 @@ var fish_loc = [[0.2, (- 0.3)], [0, (- 0.3)], [(- 0.2), (- 0.3)], [(- 0.4), (- 0
 var box_loc = [[(- 0.32), 0.25], [0, 0.25], [0.32, 0.25]];
 var fish_interval = [0.5, 1.0, 1.5];
 var block_correct = [];
-var msg = "doh!";
-var conditionfolder = "";
+
 
 // init psychoJS:
 const psychoJS = new PsychoJS({
@@ -198,7 +196,7 @@ psychoJS.start({
     {'name': 'stimuli/box_outline.png', 'path': 'resources/stimuli/box_outline.png'},
     {'name': 'stimuli/clear-jar.PNG', 'path': 'resources/stimuli/clear-jar.PNG'},
     {'name': 'stimuli/code_component.txt', 'path': 'resources/stimuli/code_component.txt'},
-    {'name': 'stimuli/jars.PNG', 'path': 'resources/stimuli/jars.PNG'},
+    {'name': 'stimuli/all_ponds.png', 'path': 'resources/stimuli/all_ponds.png'},
     {'name': 'stimuli/pond_selector_box.png', 'path': 'resources/stimuli/pond_selector_box.png'},
     {'name': 'default.png', 'path': 'https://pavlovia.org/assets/default/default.png'},
     // new block and trial assignments
@@ -276,7 +274,7 @@ var ins4_key;
 var inst4_image;
 var option_practiceClock;
 var pond_label_2;
-var jars_2;
+var ponds_2;
 var arrow_2;
 var boy_2;
 var F1_2;
@@ -289,7 +287,7 @@ var box_show_2;
 var key_resp_2;
 var response_practiceClock;
 var pond_label2_2;
-var jars2_2;
+var ponds2_2;
 var arrow2_2;
 var boy2_2;
 var f1_2;
@@ -307,7 +305,7 @@ var ExpStart_key;
 var reward_resetClock;
 var option_fishClock;
 var pond_label;
-var jars;
+var ponds;
 var arrow;
 var boy;
 var F1;
@@ -319,7 +317,7 @@ var box_outline;
 var box_show;
 var fish_key_button;
 var response_fishClock;
-var jars2;
+var ponds2;
 var arrow2;
 var boy2;
 var f1;
@@ -514,10 +512,10 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  jars_2 = new visual.ImageStim({
+  ponds_2 = new visual.ImageStim({
     win : psychoJS.window,
-    name : 'jars_2', units : undefined, 
-    image : 'stimuli/jars.PNG', mask : undefined,
+    name : 'ponds_2', units : undefined, 
+    image : 'stimuli/all_ponds.png', mask : undefined,
     anchor : 'center',
     ori : 0.0, pos : pond_loc, size : [1, 0.5],
     color : new util.Color([1,1,1]), opacity : undefined,
@@ -654,10 +652,10 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  jars2_2 = new visual.ImageStim({
+  ponds2_2 = new visual.ImageStim({
     win : psychoJS.window,
-    name : 'jars2_2', units : undefined, 
-    image : 'stimuli/jars.PNG', mask : undefined,
+    name : 'ponds2_2', units : undefined, 
+    image : 'stimuli/all_ponds.png', mask : undefined,
     anchor : 'center',
     ori : 0.0, pos : pond_loc, size : [1, 0.5],
     color : new util.Color([1,1,1]), opacity : undefined,
@@ -828,10 +826,10 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  jars = new visual.ImageStim({
+  ponds = new visual.ImageStim({
     win : psychoJS.window,
-    name : 'jars', units : undefined, 
-    image : 'stimuli/jars.PNG', mask : undefined,
+    name : 'ponds', units : undefined, 
+    image : 'stimuli/all_ponds.png', mask : undefined,
     anchor : 'center',
     ori : 0.0, pos : pond_loc, size : [1, 0.5],
     color : new util.Color((1.0000, 1.0000, 1.0000)), opacity : undefined,
@@ -955,10 +953,10 @@ async function experimentInit() {
   
   // Initialize components for Routine "response_fish"
   response_fishClock = new util.Clock();
-  jars2 = new visual.ImageStim({
+  ponds2 = new visual.ImageStim({
     win : psychoJS.window,
-    name : 'jars2', units : undefined, 
-    image : 'stimuli/jars.PNG', mask : undefined,
+    name : 'ponds2', units : undefined, 
+    image : 'stimuli/all_ponds.png', mask : undefined,
     anchor : 'center',
     ori : 0.0, pos : pond_loc, size : [1, 0.5],
     color : new util.Color([1,1,1]), opacity : undefined,
@@ -2042,6 +2040,13 @@ console.log("random index: " + randomIndex)
 var assigned_block_order = block_order_options[randomIndex];
 console.log("assigned block order: " + assigned_block_order)
 
+var n_blocks;
+if (debug_mode == true){
+  n_blocks = 0;
+} else {
+  n_blocks = 1;
+}
+
 function blockLoopBegin(blockLoopScheduler, snapshot) {
   return async function() {
     TrialHandler.fromSnapshot(snapshot); // update internal variables (.thisN etc) of the loop
@@ -2049,7 +2054,7 @@ function blockLoopBegin(blockLoopScheduler, snapshot) {
     // set up handler to look after randomisation of conditions etc
     block = new TrialHandler({
       psychoJS: psychoJS,
-      nReps: 1, method: TrialHandler.Method.SEQUENTIAL,
+      nReps: n_blocks, method: TrialHandler.Method.SEQUENTIAL,
       extraInfo: expInfo, originPath: undefined,
       trialList: assigned_block_order,
       seed: undefined, name: 'block'
@@ -2212,7 +2217,7 @@ function option_practiceRoutineBegin(snapshot) {
     // keep track of which components have finished
     option_practiceComponents = [];
     option_practiceComponents.push(pond_label_2);
-    option_practiceComponents.push(jars_2);
+    option_practiceComponents.push(ponds_2);
     option_practiceComponents.push(arrow_2);
     option_practiceComponents.push(boy_2);
     option_practiceComponents.push(F1_2);
@@ -2264,13 +2269,13 @@ function option_practiceRoutineEachFrame() {
       pond_label_2.setText(endMsg, false);
     }
     
-    // *jars_2* updates
-    if (t >= 0.0 && jars_2.status === PsychoJS.Status.NOT_STARTED) {
+    // *ponds_2* updates
+    if (t >= 0.0 && ponds_2.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      jars_2.tStart = t;  // (not accounting for frame time here)
-      jars_2.frameNStart = frameN;  // exact frame index
+      ponds_2.tStart = t;  // (not accounting for frame time here)
+      ponds_2.frameNStart = frameN;  // exact frame index
       
-      jars_2.setAutoDraw(true);
+      ponds_2.setAutoDraw(true);
     }
 
     
@@ -2502,7 +2507,7 @@ function response_practiceRoutineBegin(snapshot) {
     // keep track of which components have finished
     response_practiceComponents = [];
     response_practiceComponents.push(pond_label2_2);
-    response_practiceComponents.push(jars2_2);
+    response_practiceComponents.push(ponds2_2);
     response_practiceComponents.push(arrow2_2);
     response_practiceComponents.push(boy2_2);
     response_practiceComponents.push(f1_2);
@@ -2545,18 +2550,18 @@ function response_practiceRoutineEachFrame() {
       pond_label2_2.setAutoDraw(false);
     }
     
-    // *jars2_2* updates
-    if (t >= 0.0 && jars2_2.status === PsychoJS.Status.NOT_STARTED) {
+    // *ponds2_2* updates
+    if (t >= 0.0 && ponds2_2.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      jars2_2.tStart = t;  // (not accounting for frame time here)
-      jars2_2.frameNStart = frameN;  // exact frame index
+      ponds2_2.tStart = t;  // (not accounting for frame time here)
+      ponds2_2.frameNStart = frameN;  // exact frame index
       
-      jars2_2.setAutoDraw(true);
+      ponds2_2.setAutoDraw(true);
     }
 
     frameRemains = 0.0 + 0.8 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (jars2_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      jars2_2.setAutoDraw(false);
+    if (ponds2_2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      ponds2_2.setAutoDraw(false);
     }
     
     // *arrow2_2* updates
@@ -3009,7 +3014,7 @@ function option_fishRoutineBegin(snapshot) {
     // keep track of which components have finished
     option_fishComponents = [];
     option_fishComponents.push(pond_label);
-    option_fishComponents.push(jars);
+    option_fishComponents.push(ponds);
     option_fishComponents.push(arrow);
     option_fishComponents.push(boy);
     option_fishComponents.push(F1);
@@ -3060,13 +3065,13 @@ function option_fishRoutineEachFrame() {
       pond_label.setText(endMsg, false);
     }
     
-    // *jars* updates
-    if (t >= 0.0 && jars.status === PsychoJS.Status.NOT_STARTED) {
+    // *ponds* updates
+    if (t >= 0.0 && ponds.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      jars.tStart = t;  // (not accounting for frame time here)
-      jars.frameNStart = frameN;  // exact frame index
+      ponds.tStart = t;  // (not accounting for frame time here)
+      ponds.frameNStart = frameN;  // exact frame index
       
-      jars.setAutoDraw(true);
+      ponds.setAutoDraw(true);
     }
 
     
@@ -3299,7 +3304,7 @@ function response_fishRoutineBegin(snapshot) {
     f5.setImage(fish5);
     // keep track of which components have finished
     response_fishComponents = [];
-    response_fishComponents.push(jars2);
+    response_fishComponents.push(ponds2);
     response_fishComponents.push(arrow2);
     response_fishComponents.push(boy2);
     response_fishComponents.push(f1);
@@ -3328,18 +3333,18 @@ function response_fishRoutineEachFrame() {
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
     
-    // *jars2* updates
-    if (t >= 0.0 && jars2.status === PsychoJS.Status.NOT_STARTED) {
+    // *ponds2* updates
+    if (t >= 0.0 && ponds2.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
-      jars2.tStart = t;  // (not accounting for frame time here)
-      jars2.frameNStart = frameN;  // exact frame index
+      ponds2.tStart = t;  // (not accounting for frame time here)
+      ponds2.frameNStart = frameN;  // exact frame index
       
-      jars2.setAutoDraw(true);
+      ponds2.setAutoDraw(true);
     }
 
     frameRemains = 0.0 + 0.5 - psychoJS.window.monitorFramePeriod * 0.75;  // most of one frame period left
-    if (jars2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
-      jars2.setAutoDraw(false);
+    if (ponds2.status === PsychoJS.Status.STARTED && t >= frameRemains) {
+      ponds2.setAutoDraw(false);
     }
     
     // *arrow2* updates
