@@ -3061,7 +3061,7 @@ function option_fishRoutineEachFrame() {
     }
 
      // Check if a key is pressed too soon (< 200ms)
-     if (t < fish_int + 0.5 && key_resp_2.getKeys().length > 0) {
+     if (t < (fish_int + 0.5) && fish_key_button.getKeys().length > 0) {
       // do not register key response
       // allow trial to continue
       console.log("Too soon fish_int + 0.5")
@@ -3189,7 +3189,7 @@ function option_fishRoutineEachFrame() {
     }
     
     // *fish_key_button* updates
-    if (t >= fish_int && fish_key_button.status === PsychoJS.Status.NOT_STARTED) {
+    if (t >= (fish_int + 0.5) && fish_key_button.status === PsychoJS.Status.NOT_STARTED) {
       console.log("this is a valid response")
       // keep track of start time/frame for later
       fish_key_button.tStart = t;  // (not accounting for frame time here)
