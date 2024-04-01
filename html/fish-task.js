@@ -2253,6 +2253,15 @@ function option_practiceRoutineEachFrame() {
             continueRoutine = false;
         }
     }
+
+     // Check if a key is pressed too soon (< 200ms)
+     if (t < fish_int + 0.5 && key_resp_2.getKeys().length > 0) {
+      // do not register key response
+      // allow trial to continue
+      console.log("Too soon fish_int + 0.5")
+      // endMsg = "You pressed too soon";
+      // endTrial = true;
+    }
     
     
     // *pond_label_2* updates
@@ -2375,6 +2384,7 @@ function option_practiceRoutineEachFrame() {
     
     // *key_resp_2* updates
     if (t >= fish_int && key_resp_2.status === PsychoJS.Status.NOT_STARTED) {
+      console.log("this is a valid response")
       // keep track of start time/frame for later
       key_resp_2.tStart = t;  // (not accounting for frame time here)
       key_resp_2.frameNStart = frameN;  // exact frame index
@@ -3049,6 +3059,15 @@ function option_fishRoutineEachFrame() {
             continueRoutine = false;
         }
     }
+
+     // Check if a key is pressed too soon (< 200ms)
+     if (t < fish_int + 0.5 && key_resp_2.getKeys().length > 0) {
+      // do not register key response
+      // allow trial to continue
+      console.log("Too soon fish_int + 0.5")
+      // endMsg = "You pressed too soon";
+      // endTrial = true;
+    }
     
     
     // *pond_label* updates
@@ -3171,6 +3190,7 @@ function option_fishRoutineEachFrame() {
     
     // *fish_key_button* updates
     if (t >= fish_int && fish_key_button.status === PsychoJS.Status.NOT_STARTED) {
+      console.log("this is a valid response")
       // keep track of start time/frame for later
       fish_key_button.tStart = t;  // (not accounting for frame time here)
       fish_key_button.frameNStart = frameN;  // exact frame index
