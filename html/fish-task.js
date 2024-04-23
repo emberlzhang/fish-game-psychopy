@@ -20,11 +20,19 @@ var debug_mode = false; // toggle true to skip real trials in experiment
 
 //// Handle URL Params and Participant Data
 let expInfo = { // these show up as fields on starting page if URL params are not present
-  'study_id': '',
-  'path_id': ''
-  // 'prolific_id': '',
-  // 'subject_id': ''
-  // 'session_id': ''
+  
+  // If running a prolific study, use these params:
+  'prolific_id': '', // asks the user to input if not found in url params
+  'path_id': '', // asks the user to input if not found in url params
+  
+  // If running study for invite-only participants, use these params: 
+  // 'subject_id': '' 
+  // 'path_id': '',
+
+  // Extra params for reference:
+  // 'group_id': '', // defunct feature for now
+  // 'study_id': '', // only for prolific studies
+  // 'session_id': '' // only for prolific studies
 };
 
 var subject_data = {};
@@ -32,7 +40,7 @@ var subject_data = {};
 var url_params = window.location.search.slice(1); // slice remove first char to get rid of beginning "?"
 // example of url_params: "prolific_id=pid1&study_id=si1&session_id=sid1&path_id=path"
 var indiv_params = url_params.split("&")
-console.log(url_params);
+console.log(url_params)
 console.log(indiv_params)
 
 var param;
@@ -46,25 +54,29 @@ for (let i = 0; i < indiv_params.length; i++) {
   if (param.toLowerCase().includes("prolific_id")) { // only for prolific participants
     console.log("pid found")
     subject_data.prolific_id = par_vals[1];
-  } else if (param.toLowerCase().includes("study_id")) {
+  } // else if (param.toLowerCase().includes("group_id")) { // now defunct because not using in Redcap
+  //   console.log("group id found")
+  //   subject_data.group_id = par_vals[1];
+  else if (param.toLowerCase().includes("study_id")) { // only for prolific participants
     console.log("study id found")
     subject_data.study_id = par_vals[1];
-  } else if (param.toLowerCase().includes("session_id")) {
+  } else if (param.toLowerCase().includes("session_id")) { // only for prolific participants
     console.log("sid found")
     subject_data.session_id = par_vals[1];
   } else if (param.toLowerCase().includes("path_id")) {
-    console.log("path found")
+    console.log("path id found")
     subject_data.path_id = par_vals[1];
-  } else if (param.toLowerCase().includes("subject_id")) { // only for invited subjects
-    console.log("subj id found")
-    subject_data.subject_id = par_vals[1];
   }
+  // else if (param.toLowerCase().includes("subject_id")) { // only for invited subjects
+  //   console.log("subj id found")
+  //   subject_data.subject_id = par_vals[1];
+  // }
 };
 
 console.log("Subject data collected: ")
 console.log(subject_data)
 
-switch(subject_data.study_id) { // study_id determines which study it goes to 
+switch(subject_data.group_id) { // study_id determines which study it goes to 
   case "1A": study_group = "nicotine_grp_online";
     break;
   case "1B": study_group = "nicotine_ctrl_online";
@@ -81,6 +93,9 @@ switch(subject_data.study_id) { // study_id determines which study it goes to
     break;
   case "2B": study_group = "eatingdisorder_ctrl_invited"; redcap_completionsurvey = "?s=eatingdisorder_ctrl_cc";
     break;
+  case undefined:
+    console.log("no group id found in switch case block")  
+    break;
 }
 
 if (subject_data.path_id.toUpperCase() == "A") {
@@ -88,11 +103,11 @@ if (subject_data.path_id.toUpperCase() == "A") {
   redirect_url = "http://run.pavlovia.org/janetlchang/slot-machine" +  "?" + url_params;
 } else if (subject_data.path_id.toUpperCase() == "B") {
   // fish task is last task, need to redirect to study completion page
-    if (study_group.includes("invited") || subject_data.prolific_id == '') {
-      // redirect for invited subject
-      redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
-    } else // redirect for prolific subject
-      redirect_url = "https://app.prolific.com/submissions/complete?cc=C19HH1X3" + "&" + url_params;
+    // if (study_group.includes("invited") || subject_data.prolific_id == '') {
+    //   // redirect for invited subject
+    //   redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
+    // } else // redirect for prolific subject
+    redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365" + "&" + url_params; // completion code for prolific main general study for all groups
 }
 
 console.log("redirect_url: " + redirect_url)
@@ -113,7 +128,7 @@ var block_correct = [];
 
 // init psychoJS:
 const psychoJS = new PsychoJS({
-  debug: true
+  debug: false
 });
 
 // open window:
@@ -376,7 +391,10 @@ async function experimentInit() {
   text_1a = new visual.TextStim({
     win: psychoJS.window,
     name: 'text_1a',
-    text: 'Which Pond? Fishing Game\n\nImagine a boy that goes fishing for 10 days. There are three ponds, each containing fish of different colors: blue, yellow, and green. In each pond the majority of the fish are of a single color.',
+    text: 'Which Pond? Fishing Game' +
+    '\n\nImagine a boy that goes fishing for 10 days.' +
+    'There are three ponds, each containing fish of different colors: blue, yellow, and green.' +
+    'In each pond the majority of the fish are of a single color.',
     font: 'Arial',
     units: undefined, 
     pos: [0, 0.35], height: 0.035,  wrapWidth: undefined, ori: 0.0,
@@ -417,7 +435,7 @@ async function experimentInit() {
     win: psychoJS.window,
     name: 'text_2',
     text: 'A correct guess is rewarded with $1, while an incorrect guess earns $0.' +
-    '\n\nAt the end of the game, you will receive the total bonus from one randomly selected session.' + 
+    '\n\nAt the end of the study, you will receive the total bonus from one randomly selected session from this game OR another game in this study.' + 
     '\n\nThe maximum bonus you can receive from this game is $15, if you guess correctly for all trials.' +
     '\n\nPress any key to continue.',
     font: 'Arial',
@@ -1105,12 +1123,32 @@ async function experimentInit() {
     depth: -1.0 
   });
   
+  var ending_text;
+  if (redirect_url) { // if the redirect_url available (should be the case for prolific studies)
+    if (path_id==="A") { 
+      ending_text = '\nYou have successfully completed the task.'+
+                    '\n\nYou will now be directed to the next part of the study. Thank you!';
+    } else { 
+      ending_text = '\nYou have successfully completed the task.'+ 
+                    '\n\nProlific users, your completion code is: C2RO6365'+
+                    '\n\nIn 10 seconds, you will be redirected to Prolific to complete the study.' +
+                    '\n\nIf you are not redirected, copy and paste the following webpage into your browser:' +
+                    '\n\nhttps://app.prolific.com/submissions/complete?cc=C2RO6365'; }
+  } else { // if there is no redirect_url available
+    ending_text = '\nYou have successfully completed the task.' +
+    '\n\nAttention PROLIFIC users: ' + 
+    '\n\nTo complete this study, record the completion code: C2RO6365' + 
+    '\n\nOr go to the following webpage on your browser: ' +
+    '\n\nhttps://app.prolific.com/submissions/complete?cc=C2RO6365' + 
+    '\n\nThank you!'
+  }
+
   // Initialize components for Routine "reward"
   rewardClock = new util.Clock();
   reward_txt = new visual.TextStim({
     win: psychoJS.window,
     name: 'reward_txt',
-    text: 'You have successfully completed the task.\n\nThank you!',
+    text: ending_text,
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
@@ -3683,7 +3721,7 @@ function rewardRoutineBegin(snapshot) {
     rewardClock.reset(); // clock
     frameN = -1;
     continueRoutine = true; // until we're told otherwise
-    routineTimer.add(2.000000);
+    routineTimer.add(10.000000);
     // update component parameters for each repeat
     // keep track of which components have finished
     rewardComponents = [];
