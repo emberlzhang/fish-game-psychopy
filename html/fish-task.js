@@ -76,27 +76,26 @@ for (let i = 0; i < indiv_params.length; i++) {
 console.log("Subject data collected: ")
 console.log(subject_data)
 
-switch(subject_data.group_id) { // study_id determines which study it goes to 
-  case "1A": study_group = "nicotine_grp_online";
-    break;
-  case "1B": study_group = "nicotine_ctrl_online";
-    break;
-  case "1C": study_group = "nicotine_grp_invited"; redcap_completionsurvey = "?s=nicotine_cc";
-    break;
-  case "1D": study_group = "nicotine_ctrl_invited"; redcap_completionsurvey = "?s=nicotine_ctrl_cc";
-    break; 
-  case "2A": study_group = "eatingdisorder_grp_online";
-    break;
-  case "2B": study_group = "eatingdisorder_ctrl_online";
-    break;
-  case "2A": study_group = "eatingdisorder_grp_invited"; redcap_completionsurvey = "?s=eatingdisorder_cc";
-    break;
-  case "2B": study_group = "eatingdisorder_ctrl_invited"; redcap_completionsurvey = "?s=eatingdisorder_ctrl_cc";
-    break;
-  case undefined:
-    console.log("no group id found in switch case block")  
-    break;
-}
+// switch(subject_data.group_id) { // study_id determines which study it goes to 
+//   case "1A": study_group = "nicotine_grp_online";
+//     break;
+//   case "1B": study_group = "nicotine_ctrl_online";
+//     break;
+//   case "1C": study_group = "nicotine_grp_invited"; redcap_completionsurvey = "?s=nicotine_cc";
+//     break;
+//   case "1D": study_group = "nicotine_ctrl_invited"; redcap_completionsurvey = "?s=nicotine_ctrl_cc";
+//     break; 
+//   case "2A": study_group = "eatingdisorder_grp_online";
+//     break;
+//   case "2B": study_group = "eatingdisorder_ctrl_online";
+//     break;
+//   case "2A": study_group = "eatingdisorder_grp_invited"; redcap_completionsurvey = "?s=eatingdisorder_cc";
+//     break;
+//   case "2B": study_group = "eatingdisorder_ctrl_invited"; redcap_completionsurvey = "?s=eatingdisorder_ctrl_cc";
+//     break;
+//   case undefined: console.log("no group id found in switch case block")  
+//     break;
+// }
 
 if (subject_data.path_id.toUpperCase() == "A") {
   // redirect to slot task
@@ -107,7 +106,7 @@ if (subject_data.path_id.toUpperCase() == "A") {
     //   // redirect for invited subject
     //   redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
     // } else // redirect for prolific subject
-    redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365" + "&" + url_params; // completion code for prolific main general study for all groups
+    redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365"; // completion code for prolific main general study for all groups
 }
 
 console.log("redirect_url: " + redirect_url)
@@ -1186,6 +1185,13 @@ function welcomeRoutineBegin(snapshot) {
     welcomeComponents.push(text_welcome);
     welcomeComponents.push(welcome_key);
     
+    // Create new url params if non-existent in URL from user input
+    if (!path_id) {
+      url_params = "path_id=" + subject_data.path_id;
+      console.log("This is the new path ID after user input: " + subject_data.path_id)
+      console.log("This is the new url_params after user input: " + url_params)
+    }
+
     for (const thisComponent of welcomeComponents)
       if ('status' in thisComponent)
         thisComponent.status = PsychoJS.Status.NOT_STARTED;
