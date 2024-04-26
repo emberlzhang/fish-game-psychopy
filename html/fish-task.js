@@ -97,20 +97,26 @@ console.log(subject_data)
 //     break;
 // }
 
-if (subject_data.path_id.toUpperCase() == "A") {
-  // redirect to slot task
-  redirect_url = "http://run.pavlovia.org/janetlchang/slot-machine" +  "?" + url_params;
-} else if (subject_data.path_id.toUpperCase() == "B") {
-  // fish task is last task, need to redirect to study completion page
-    // if (study_group.includes("invited") || subject_data.prolific_id == '') {
-    //   // redirect for invited subject
-    //   redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
-    // } else // redirect for prolific subject
-    redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365"; // completion code for prolific main general study for all groups
+if (subject_data.path_id) {
+  if (subject_data.path_id.toUpperCase() == "A") {
+    // redirect to slot task
+    redirect_url = "http://run.pavlovia.org/janetlchang/slot-machine" +  "?" + url_params;
+  } else if (subject_data.path_id.toUpperCase() == "B") {
+    // fish task is last task, need to redirect to study completion page
+      // if (study_group.includes("invited") || subject_data.prolific_id == '') {
+      //   // redirect for invited subject
+      //   redirect_url = "http://redcap.com" + redcap_completionsurvey +  "&" + url_params; 
+      // } else // redirect for prolific subject
+      redirect_url = "https://app.prolific.com/submissions/complete?cc=C2RO6365"; // completion code for prolific main general study for all groups
+  } else {
+    redirect_url = "";
+    console.log("no redirect url set due to invalid path ID")
+  }
 } else {
   redirect_url = "";
-  console.log("no redirect url set due to missing or invalid path ID")
+  console.log("no redirect url set due to missing path ID")
 }
+
 
 console.log("redirect_url: " + redirect_url)
 
