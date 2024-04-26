@@ -1198,7 +1198,7 @@ function welcomeRoutineBegin(snapshot) {
     welcomeComponents.push(welcome_key);
     
     // Create new url params if non-existent in URL from user input
-    if (!path_id) {
+    if (!url_params || url_params == "") {
       url_params = "path_id=" + subject_data.path_id;
       console.log("This is the new path ID after user input: " + subject_data.path_id)
       console.log("This is the new url_params after user input: " + url_params)
