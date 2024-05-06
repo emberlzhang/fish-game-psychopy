@@ -216,6 +216,14 @@ psychoJS.start({
     {'name': 'stimuli/bead_y.PNG', 'path': 'resources/stimuli/bead_y.PNG'},
     {'name': 'stimuli/blank.jpg', 'path': 'resources/stimuli/blank.jpg'},
     {'name': 'stimuli/blank2.jpg', 'path': 'resources/stimuli/blank2.jpg'},
+    {'name': 'stimuli/instruction_image.png', 'path': 'resources/stimuli/instruction_image.png'},
+    {'name': 'stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4', 'path': 'resources/stimuli/WhichPondTutorialVideo_FINAL_3.1.23.mp4'},
+    {'name': 'stimuli/arrow.png', 'path': 'resources/stimuli/arrow.png'},
+    {'name': 'stimuli/bead_b.PNG', 'path': 'resources/stimuli/bead_b.PNG'},
+    {'name': 'stimuli/bead_g.PNG', 'path': 'resources/stimuli/bead_g.PNG'},
+    {'name': 'stimuli/bead_y.PNG', 'path': 'resources/stimuli/bead_y.PNG'},
+    {'name': 'stimuli/blank.jpg', 'path': 'resources/stimuli/blank.jpg'},
+    {'name': 'stimuli/blank2.jpg', 'path': 'resources/stimuli/blank2.jpg'},
     {'name': 'stimuli/box_outline.png', 'path': 'resources/stimuli/box_outline.png'},
     {'name': 'stimuli/clear-jar.PNG', 'path': 'resources/stimuli/clear-jar.PNG'},
     {'name': 'stimuli/code_component.txt', 'path': 'resources/stimuli/code_component.txt'},
@@ -3769,7 +3777,6 @@ function rewardRoutineBegin(snapshot) {
   }
 }
 
-
 function rewardRoutineEachFrame() {
   return async function () {
     //--- Loop for each frame of Routine 'reward' ---
@@ -3777,7 +3784,8 @@ function rewardRoutineEachFrame() {
     t = rewardClock.getTime();
     frameN = frameN + 1;// number of completed frames (so 0 is the first frame)
     // update/draw components on each frame
-    
+
+
     // *reward_txt* updates
     if (t >= 0.0 && reward_txt.status === PsychoJS.Status.NOT_STARTED) {
       // keep track of start time/frame for later
@@ -3817,7 +3825,9 @@ function rewardRoutineEachFrame() {
   };
 }
 
-
+var reward_score;
+var reward_amt;
+var end_task_time; 
 function rewardRoutineEnd(snapshot) {
   return async function () {
     //--- Ending Routine 'reward' ---
@@ -3826,6 +3836,13 @@ function rewardRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     }
+    // save end time and bonus calculation
+    reward_score = util.randchoice(util.range(block_reward.length));
+    reward_amt = (reward_score + 1);
+    psychoJS.experiment.addData("reward_amount", reward_amt);
+    end_task_time = util.MonotonicClock.getDateStr();
+    psychoJS.experiment.addData("date_end_task", end_task_time);
+
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
       psychoJS.experiment.nextEntry(snapshot);
@@ -3843,24 +3860,13 @@ function importConditions(currentLoop) {
 }
 
 
-var reward_score;
-var reward_amt;
-var end_task_time; 
 async function quitPsychoJS(message, isCompleted) {
   // Check for and save orphaned data
   if (psychoJS.experiment.isEntryEmpty()) {
     psychoJS.experiment.nextEntry();
   }
-  
-  // Run 'End Experiment' code from reward_pay
-  reward_score = util.randchoice(util.range(block_correct.length));
-  reward_amt = (reward_score + 1);
-  psychoJS.experiment.addData("reward_amount", reward_amt);
-  
-  // Save end task time
-  end_task_time = util.MonotonicClock.getDateStr();
-  psychoJS.experiment.addData("date_end_task", end_task_time);
-  
+
+  // Run 'End Experiment' code from code
   psychoJS.window.close();
   psychoJS.quit({message: message, isCompleted: isCompleted});
   
