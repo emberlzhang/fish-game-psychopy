@@ -3827,7 +3827,7 @@ function rewardRoutineEachFrame() {
   };
 }
 
-var reward_score;
+var reward_index;
 var reward_amt;
 var end_task_time; 
 function rewardRoutineEnd(snapshot) {
@@ -3838,12 +3838,16 @@ function rewardRoutineEnd(snapshot) {
         thisComponent.setAutoDraw(false);
       }
     }
-    // save end time and bonus calculation
-    reward_score = util.randchoice(util.range(block_correct.length));
-    reward_amt = (reward_score + 1);
+    // bonus calculation
+    psychoJS.experiment.addData("block_correct.length", block_correct.length-1);
+    psychoJS.experiment.addData("block_correct_all", block_correct);
+    reward_index = util.randchoice(util.range(0, block_correct.length-1));
+    reward_amt = block_correct[reward_index] / 100.00;
     psychoJS.experiment.addData("reward_amount", reward_amt);
+    // save end time
     end_task_time = util.MonotonicClock.getDateStr();
     psychoJS.experiment.addData("date_end_task", end_task_time);
+
 
     // Routines running outside a loop should always advance the datafile row
     if (currentLoop === psychoJS.experiment) {
