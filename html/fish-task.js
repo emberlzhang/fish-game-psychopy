@@ -1147,44 +1147,45 @@ async function experimentInit() {
     depth: -1.0 
   });
   
-  var ending_text;
-  var alternate_redirect = "http://run.pavlovia.org/janetlchang/slot-machine" +  "?" + url_params;
-  if (redirect_url) { // if the redirect_url available (should be the case for prolific studies)
-    if (subject_data.path_id.toUpperCase === "A") { 
-      ending_text = '\nYou have successfully completed the task.'+
-                    '\n\nYou will now be directed to the next task of the study. Thank you!';
-    } else if (subject_data.path_id.toUpperCase === "B") { 
-      ending_text = '\nYou have successfully completed the task and this study.'; 
-                    // + 
-                    // '\n\nProlific users, your completion code is: C2RO6365'+
-                    // '\n\nIn 10 seconds, you will be redirected to Prolific to complete the study.' +
-                    // '\n\nIf you are not redirected, copy and paste the following webpage into your browser:' +
-                    // '\n\nhttps://app.prolific.com/submissions/complete?cc=C2RO6365'; 
-    } else { // if there is no redirect_url available
-      ending_text = '\nYou have successfully completed the task.';
-      console.log("Redirect URL was not null but not A / B")
-      // '\n\nAttention PROLIFIC users: ' + 
-      // '\n\nTo complete this study, please complete the "Slot Machine Game" task if you have not already done so, by going to this link:' + 
-      // '\n\n' + alternate_redirect +
-      // '\n\nIf you have already done BOTH Fishing Game and Slot Machine tasks, please return to Prolific and send us a message alerting us of your completion to receive your final compensation.' + 
-      // '\n\nThank you!'
-    }
-  } else { // if there is no redirect_url available
-    ending_text = '\nYou have successfully completed the task.';
-    console.log("Redirect URL was null")
-    // '\n\nAttention PROLIFIC users: ' + 
-    // '\n\nTo complete this study, please complete the "Slot Machine Game" task if you have not already done so, by going to this link:' + 
-    // '\n\n' + alternate_redirect +
-    // '\n\nIf you have already done BOTH Fishing Game and Slot Machine tasks, please return to Prolific and send us a message alerting us of your completion to receive your final compensation.' + 
-    // '\n\nThank you!'
-  }
+  // var ending_text = '\nYou have successfully completed the task.'+
+  //                   '\n\nYou will now be directed to the next task of the study. Thank you!';
+  // var alternate_redirect = "http://run.pavlovia.org/janetlchang/slot-machine" +  "?" + url_params;
+  // if (redirect_url) { // if the redirect_url available (should be the case for prolific studies)
+  //   if (subject_data.path_id.toUpperCase === "A") { 
+  //     ending_text = '\nYou have successfully completed the task.'+
+  //                   '\n\nYou will now be directed to the next task of the study. Thank you!';
+  //   } else if (subject_data.path_id.toUpperCase === "B") { 
+  //     ending_text = '\nYou have successfully completed the task and this study.'; 
+  //                   // + 
+  //                   // '\n\nProlific users, your completion code is: C2RO6365'+
+  //                   // '\n\nIn 10 seconds, you will be redirected to Prolific to complete the study.' +
+  //                   // '\n\nIf you are not redirected, copy and paste the following webpage into your browser:' +
+  //                   // '\n\nhttps://app.prolific.com/submissions/complete?cc=C2RO6365'; 
+  //   } else { // if there is no redirect_url available
+  //     ending_text = '\nYou have successfully completed the task.';
+  //     console.log("Redirect URL was not null but not A / B")
+  //     // '\n\nAttention PROLIFIC users: ' + 
+  //     // '\n\nTo complete this study, please complete the "Slot Machine Game" task if you have not already done so, by going to this link:' + 
+  //     // '\n\n' + alternate_redirect +
+  //     // '\n\nIf you have already done BOTH Fishing Game and Slot Machine tasks, please return to Prolific and send us a message alerting us of your completion to receive your final compensation.' + 
+  //     // '\n\nThank you!'
+  //   }
+  // } else { // if there is no redirect_url available
+  //   ending_text = '\nYou have successfully completed the task.';
+  //   console.log("Redirect URL was null")
+  //   // '\n\nAttention PROLIFIC users: ' + 
+  //   // '\n\nTo complete this study, please complete the "Slot Machine Game" task if you have not already done so, by going to this link:' + 
+  //   // '\n\n' + alternate_redirect +
+  //   // '\n\nIf you have already done BOTH Fishing Game and Slot Machine tasks, please return to Prolific and send us a message alerting us of your completion to receive your final compensation.' + 
+  //   // '\n\nThank you!'
+  // }
 
   // Initialize components for Routine "reward"
   rewardClock = new util.Clock();
   reward_txt = new visual.TextStim({
     win: psychoJS.window,
     name: 'reward_txt',
-    text: ending_text,
+    text: "You have successfully completed the task.\n\nThank you!",
     font: 'Arial',
     units: undefined, 
     pos: [0, 0], height: 0.07,  wrapWidth: undefined, ori: 0.0,
