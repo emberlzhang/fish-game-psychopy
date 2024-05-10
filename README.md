@@ -1,5 +1,5 @@
 # FishTask
-### test
+
 PsychoPy Fish Game Version 2023 by Ember Zhang
 
 Adapted from PsychoPy Version 2022 August by Rupak Krishnamurthy
